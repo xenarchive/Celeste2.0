@@ -35,14 +35,15 @@ const About = () => {
             Join Pavasana for this cinematic journey.
           </p>
           <div className="flex justify-center w-full">
-          <BlurText
-            text={"Framing the Day"}
-            delay={150}
-            animateBy="words"
-            direction="top"
-            onAnimationComplete={() => console.log('Animation completed!')}
-            className="text-7xl sm:text-8xl md:text-[8.5rem] lg:text-[10rem] mt-5 text-black text-center bbh-sans-bogle-regular special-font max-w-5xl leading-[0.9]"
-          />
+            <BlurText
+              text={"A tribute to Satyajit Ray"}
+              delay={150}
+              animateBy="words"
+              direction="top"
+              onAnimationComplete={() => console.log('Animation completed!')}
+              noWrap
+              className="text-[40px] sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px] mt-5 text-white text-center bbh-sans-bogle-regular special-font max-w-full leading-[0.9]"
+            />
           </div>
         </div>
 

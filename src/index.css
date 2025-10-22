@@ -8,7 +8,8 @@
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: #f1e7e7;
+  background-color: #000000;
+  color: #ffffff;
   font-family: "General Sans", sans-serif;
 }
 
@@ -154,6 +155,15 @@ body {
 
   .contact-clip-path-2 {
     clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
+  }
+
+  /* Hide scrollbar utility for horizontal carousels */
+  .no-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
   }
 }
 

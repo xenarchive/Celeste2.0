@@ -148,7 +148,7 @@ const Hero = () => {
               Celeste 2.0
             </h1> */}
             <h1 className="font-serif font-bold text-7xl md:text-9xl mb-6 text-[#EFB642] tracking-tight ">
-              Celeste
+              Celesté 2.0
             </h1>
 
             <p className="mb-5 max-w-2xl font-robert-regular text-blue-100 text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px]">
