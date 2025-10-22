@@ -140,35 +140,33 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          2.<b>0</b>
-        </h1>
+        <div className="absolute inset-0 bg-black/60 z-25 pointer-events-none"></div>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-yellow-400 bbh-sans-bogle-regular">
-              celeste
+            {/* <h1 className="font-serif text-[80px] sm:text-[100px] md:text-[120px] lg:text-[140px] text-yellow-400 leading-tight ">
+              Celeste 2.0
+            </h1> */}
+            <h1 className="font-serif font-bold text-7xl md:text-9xl mb-6 text-[#EFB642] tracking-tight ">
+              Celeste
             </h1>
 
-            <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Seeing the World Through Ray:<br /> A Festival of Film, Photography, and Enduring Bengali Art.
+            <p className="mb-5 max-w-2xl font-robert-regular text-blue-100 text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px]">
+              Seeing the World Through Ray:
+              <br /> A Festival of Film, Photography, and Enduring Bengali Art.
             </p>
 
             <Button
-              id="watch-trailer"
-              title="Watch trailer"
+              id="Register Here"
+              title="Register Here"
               leftIcon={<TiLocationArrow />}
-              containerClass="bg-yellow-300 flex-center gap-1"
-              href="https://www.instagram.com/reel/DQCNraPEw9P/?igsh=ajFkcnl0eGg2enoz"
+              containerClass="bg-yellow-400 flex-center gap-1 text-[20px] sm:text-[22px]"
+              href="https://v0-modern-web-page-xi.vercel.app/"
               target="_blank"
             />
           </div>
         </div>
       </div>
-
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-yellow-400">
-        2.<b>0</b>
-      </h1>
     </div>
   );
 };

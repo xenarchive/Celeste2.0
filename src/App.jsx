@@ -11,6 +11,7 @@ function App() {
     <main className="relative min-h-screen w-screen overflow-x-hidden">
       <NavBar />
       <Hero />
+
       <About />
       <Features />
       <Story />
