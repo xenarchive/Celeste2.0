@@ -62,7 +62,7 @@ export default function Footer() {
 									<form className="flex flex-col gap-3 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
 							<label htmlFor="email" className="sr-only">Email address</label>
 														<input id="email" type="email" placeholder="you@domain.com" className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-violet-300" />
-														<button type="submit" className="rounded-md bg-violet-300 px-4 py-2 font-robert-medium text-black transition hover:brightness-95">Subscribe</button>
+														<button type="submit" className="rounded-md bg-yellow-400 px-4 py-2 font-robert-medium text-black transition hover:brightness-95">Subscribe</button>
 						</form>
 
 									<p className="mt-3 text-xs text-white/50">We’ll never share your email. Unsubscribe anytime.</p>

@@ -70,15 +70,13 @@ export default function EventRegsitration() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {events.map((evt, index) => (
+            {events.map((evt) => (
               <a
                 key={evt.id}
                 href={evt.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative block overflow-hidden rounded-2xl border-2 border-amber-500/50 shadow-lg transition-all duration-300 after:absolute after:inset-0 after:rounded-2xl after:shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:-translate-y-1 hover:scale-[1.01] hover:border-amber-400 hover:after:shadow-[0_0_25px_rgba(245,158,11,0.5)]${
-                  index === events.length - 1 ? 'md:col-span-2 md:mx-auto md:w-1/2' : ''
-                }`}
+                className="group relative block overflow-hidden rounded-2xl border-2 border-amber-500/50 shadow-lg transition-all duration-300 after:absolute after:inset-0 after:rounded-2xl after:shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:-translate-y-1 hover:scale-[1.01] hover:border-amber-400 hover:after:shadow-[0_0_25px_rgba(245,158,11,0.5)]"
               >
                 <div className="relative flex h-36 flex-col justify-center bg-gradient-to-br from-neutral-900/70 to-neutral-900/40 p-6 transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-amber-900/20 group-hover:to-neutral-900/40">
                   <h3 className="relative z-10 mb-1 text-xl font-semibold">{evt.title}</h3>
