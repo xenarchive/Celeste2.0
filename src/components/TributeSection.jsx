@@ -27,7 +27,8 @@ const TributeSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="min-h-screen px-4 py-10 pb-0 md:px-8 lg:px-16">
+    // eslint-disable-next-line tailwindcss/enforces-shorthand
+    <section ref={sectionRef} className="px-4 py-4 pb-0 md:px-8 lg:px-16">
       <div className="mx-auto max-w-7xl">
         <div className="grid items-center gap-12 md:grid-cols-2">
           {/* Image Side */}

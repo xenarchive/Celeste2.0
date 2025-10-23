@@ -4,7 +4,7 @@ import TributeSection from "./TributeSection";
 const About = () => {
 
   return (
-    <div id="about" className="min-h-screen w-screen">
+    <div id="about" className="w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <div className="flex w-full flex-col items-center">
           <p>
