@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import { useEffect, useRef, useState } from "react";
 
 // Simple card data — replace src/img paths with your real images/videos
@@ -58,27 +59,28 @@ const sampleCards = [
   }
 ];
 
+// eslint-disable-next-line no-unused-vars
 const Card = ({ card, isPaused, isHoveredCard }) => {
   // slide image slightly on hover and reveal description only for hovered card
   return (
     <div
-      className={`min-w-[18rem] sm:min-w-[22rem] md:min-w-[28rem] lg:min-w-[34rem] flex-shrink-0 rounded-lg overflow-hidden bg-white/5 backdrop-blur-md transition-transform duration-300 ${
-        isHoveredCard ? "scale-105 z-20" : ""
+      className={`min-w-72 shrink-0 overflow-hidden rounded-lg bg-white/5 backdrop-blur-md transition-transform duration-300 sm:min-w-[22rem] md:min-w-[28rem] lg:min-w-[34rem] ${
+        isHoveredCard ? "z-20 scale-105" : ""
       }`}
     >
-      <div className="h-48 md:h-64 lg:h-72 w-full bg-gray-900 overflow-hidden">
+      <div className="h-48 w-full overflow-hidden bg-gray-900 md:h-64 lg:h-72">
         <img
           src={card.img}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out"
+          className="size-full object-cover transition-transform duration-700 ease-out"
           alt={card.title}
           style={{ transform: isHoveredCard ? "translateX(-12%)" : "translateX(0)" }}
         />
       </div>
       <div className="p-4">
-        <h3 className="font-zentry font-black text-xl text-yellow-400 mb-2">{card.title}</h3>
+        <h3 className="mb-2 font-zentry text-xl font-black text-yellow-400">{card.title}</h3>
         <div
           className={`overflow-hidden transition-all duration-500 ${
-            isHoveredCard ? "max-h-40 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"
+            isHoveredCard ? "max-h-40 translate-y-0 opacity-100" : "max-h-0 -translate-y-2 opacity-0"
           }`}
         >
           <p className={`text-sm text-yellow-400`}>{card.description}</p>
@@ -134,7 +136,7 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.5 }) => {
             setIsPaused(false);
             setHoveredIndex(null);
           }}
-          className="flex gap-6 overflow-x-auto no-scrollbar items-stretch py-6 px-4"
+          className="no-scrollbar flex items-stretch gap-6 overflow-x-auto px-4 py-6"
         >
           {cards.map((c, idx) => (
             <div
@@ -142,7 +144,7 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.5 }) => {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
               className={`transition-filter duration-300 ${
-                hoveredIndex !== null && hoveredIndex !== idx ? "blur-sm scale-95" : ""
+                hoveredIndex !== null && hoveredIndex !== idx ? "scale-95 blur-sm" : ""
               }`}
             >
               <Card card={c} isPaused={isPaused} isHoveredCard={hoveredIndex === idx} />
@@ -156,7 +158,7 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.5 }) => {
               onMouseEnter={() => setHoveredIndex(idx + cards.length)}
               onMouseLeave={() => setHoveredIndex(null)}
               className={`transition-filter duration-300 ${
-                hoveredIndex !== null && hoveredIndex !== idx + cards.length ? "blur-sm scale-95" : ""
+                hoveredIndex !== null && hoveredIndex !== idx + cards.length ? "scale-95 blur-sm" : ""
               }`}
             >
               <Card card={c} isPaused={isPaused} isHoveredCard={hoveredIndex === idx + cards.length} />

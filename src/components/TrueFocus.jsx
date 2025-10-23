@@ -59,14 +59,14 @@ const TrueFocus = ({
   };
 
   return (
-    <div className="relative flex gap-4 justify-center items-center flex-wrap mt-10 md:mt-16" ref={containerRef}>
+    <div className="relative mt-10 flex flex-wrap items-center justify-center gap-4 md:mt-16" ref={containerRef}>
       {words.map((word, index) => {
         const isActive = index === currentIndex;
         return (
           <span
             key={index}
             ref={el => (wordRefs.current[index] = el)}
-            className="relative text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] font-black cursor-pointer bbh-sans-bogle-regular"
+            className="bbh-sans-bogle-regular relative cursor-pointer text-[3.5rem] font-black md:text-[4.5rem] lg:text-[5.5rem]"
             style={{
               filter: manualMode
                 ? isActive
@@ -88,7 +88,7 @@ const TrueFocus = ({
       })}
 
       <motion.div
-        className="absolute top-0 left-0 pointer-events-none box-border border-0"
+        className="pointer-events-none absolute left-0 top-0 box-border border-0"
         animate={{
           x: focusRect.x,
           y: focusRect.y,
@@ -105,28 +105,28 @@ const TrueFocus = ({
         }}
       >
         <span
-          className="absolute w-4 h-4 border-[3px] rounded-[3px] top-[-10px] left-[-10px] border-r-0 border-b-0"
+          className="absolute left-[-10px] top-[-10px] size-4 rounded-[3px] border-[3px] border-b-0 border-r-0"
           style={{
             borderColor: 'var(--border-color)',
             filter: 'drop-shadow(0 0 4px var(--border-color))'
           }}
         ></span>
         <span
-          className="absolute w-4 h-4 border-[3px] rounded-[3px] top-[-10px] right-[-10px] border-l-0 border-b-0"
+          className="absolute right-[-10px] top-[-10px] size-4 rounded-[3px] border-[3px] border-b-0 border-l-0"
           style={{
             borderColor: 'var(--border-color)',
             filter: 'drop-shadow(0 0 4px var(--border-color))'
           }}
         ></span>
         <span
-          className="absolute w-4 h-4 border-[3px] rounded-[3px] bottom-[-10px] left-[-10px] border-r-0 border-t-0"
+          className="absolute bottom-[-10px] left-[-10px] size-4 rounded-[3px] border-[3px] border-r-0 border-t-0"
           style={{
             borderColor: 'var(--border-color)',
             filter: 'drop-shadow(0 0 4px var(--border-color))'
           }}
         ></span>
         <span
-          className="absolute w-4 h-4 border-[3px] rounded-[3px] bottom-[-10px] right-[-10px] border-l-0 border-t-0"
+          className="absolute bottom-[-10px] right-[-10px] size-4 rounded-[3px] border-[3px] border-l-0 border-t-0"
           style={{
             borderColor: 'var(--border-color)',
             filter: 'drop-shadow(0 0 4px var(--border-color))'

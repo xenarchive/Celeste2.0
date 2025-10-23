@@ -140,18 +140,18 @@ const Hero = () => {
           />
         </div>
 
-        <div className="absolute inset-0 bg-black/60 z-25 pointer-events-none"></div>
+        <div className="pointer-events-none absolute inset-0 z-30 bg-black/60"></div>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
             {/* <h1 className="font-serif text-[80px] sm:text-[100px] md:text-[120px] lg:text-[140px] text-yellow-400 leading-tight ">
               Celeste 2.0
             </h1> */}
-            <h1 className="font-serif font-bold text-7xl md:text-9xl mb-6 text-[#EFB642] tracking-tight ">
+            <h1 className="mb-6 font-serif text-7xl font-bold tracking-tight  text-[#EFB642] md:text-9xl ">
               Celesté 2.0
             </h1>
 
-            <p className="mb-5 max-w-2xl font-robert-regular text-blue-100 text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px]">
+            <p className="mb-5 max-w-2xl font-robert-regular text-[20px] text-blue-100 sm:text-[22px] md:text-[24px] lg:text-[26px]">
               Seeing the World Through Ray:
               <br /> A Festival of Film, Photography, and Enduring Bengali Art.
             </p>
