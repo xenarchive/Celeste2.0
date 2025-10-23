@@ -2,9 +2,9 @@ import clsx from "clsx";
 import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
-import { TiLocationArrow } from "react-icons/ti";
+// import { TiLocationArrow } from "react-icons/ti";
 
-import Button from "./Button";
+// import Button from "./Button";
 
 const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
 
@@ -72,13 +72,6 @@ const NavBar = () => {
           {/* Logo and Product button */}
           <div className="flex items-center gap-7">
             <img src="/img/logo.png" alt="logo" className="w-10 md:w-20" />
-
-            <Button
-              id="product-button"
-              title="Products"
-              rightIcon={<TiLocationArrow />}
-              containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            />
           </div>
 
           {/* Navigation Links and Audio Button */}

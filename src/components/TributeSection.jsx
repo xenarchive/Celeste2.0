@@ -45,7 +45,7 @@ const TributeSection = () => {
 
           {/* Content Side */}
           <div className={`-mt-16 transition-all delay-500 duration-1000${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`}>
-            <p className="font-body text-foreground/80 mb-6 text-lg leading-relaxed">
+            <p className="font-body text-foreground/80 mt-12 text-lg leading-relaxed">
               Celeste celebrates the timeless artistry of Satyajit Ray, a visionary who transformed 
               cinema into poetry. His mastery of storytelling, visual composition, and human emotion 
               continues to inspire generations of filmmakers and photographers.

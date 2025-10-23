@@ -5,7 +5,8 @@ import NavBar from "./components/Navbar";
 import HorizontalCarousel from "./components/HorizontalCarousel";
 import Gallery from "./components/Gallery";
 import Timeline from "./components/Timeline";
-
+// import { Route } from 'react-router-dom';
+// import RegistrationLink from './components/EventRegsitration';
 
 const sampleEvents = [
   {
@@ -57,7 +58,7 @@ function App() {
       <HorizontalCarousel />
       <Gallery onReady={() => setGalleryReady(true)} />
       <Timeline events={sampleEvents} startWhen={galleryReady} />
-
+      {/* <Route path="/RegistrationLink" element={<RegistrationLink />} /> */}
     </main>
   );
 }
