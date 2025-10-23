@@ -3,7 +3,7 @@
 
 export default function Footer() {
 	return (
-			<footer id="contact" className="w-full border-t border-white/10 bg-black text-white">
+			<footer className="w-full border-t border-white/10 bg-black text-white">
 				<div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
 					<div className="grid grid-cols-1 items-start gap-8 md:grid-cols-12">
 					{/* Brand + description */}

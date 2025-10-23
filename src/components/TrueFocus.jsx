@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const TrueFocus = ({
-  sentence = 'Event Highlights',
+  sentence = 'True Focus',
   manualMode = false,
   blurAmount = 5,
   borderColor = 'green',

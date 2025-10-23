@@ -8,6 +8,7 @@ import Timeline from "./components/Timeline";
 import Footer from "./components/Footer";
 import { Route, Routes } from 'react-router-dom';
 import RegistrationLink from './components/EventRegsitration';
+import Team from './components/Team';
 
 const sampleEvents = [
   {
@@ -61,6 +62,7 @@ function App() {
           <HorizontalCarousel />
           <Gallery onReady={() => setGalleryReady(true)} />
           <Timeline events={sampleEvents} startWhen={galleryReady} />
+          <Team />
           <Footer />
         </main>
       } />
