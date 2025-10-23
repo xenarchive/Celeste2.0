@@ -5,37 +5,61 @@ const Gallery = () => {
   const galleryItems = [
     {
       id: "1",
-      img: "/img/entrance.webp",
+      img: "/img/about.jpeg",
       url: "#",
       height: 400,
     },
     {
       id: "2",
-      img: "/img/about.webp",
+      img: "/img/about.jpeg",
       url: "#",
       height: 300,
     },
     {
       id: "3",
-      img: "/img/entrance.webp",
+      img: "/img/about.jpeg",
       url: "#",
       height: 500,
     },
     {
       id: "4",
-      img: "/img/about.webp",
+      img: "/img/about.jpeg",
       url: "#",
       height: 350,
     },
     {
       id: "5",
-      img: "/img/entrance.webp",
+      img: "/img/about.jpeg",
       url: "#",
       height: 450,
     },
     {
       id: "6",
-      img: "/img/about.webp",
+      img: "/img/about.jpeg",
+      url: "#",
+      height: 380,
+    },
+    {
+      id: "7",
+      img: "/img/about.jpeg",
+      url: "#",
+      height: 380,
+    },
+    {
+      id: "8",
+      img: "/img/about.jpeg",
+      url: "#",
+      height: 380,
+    },
+    {
+      id: "9",
+      img: "/img/about.jpeg",
+      url: "#",
+      height: 380,
+    },
+    {
+      id: "10",
+      img: "/img/about.jpeg",
       url: "#",
       height: 380,
     }

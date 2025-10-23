@@ -15,7 +15,9 @@ function App() {
       <Hero />
 
   <About />
-  <TrueFocus sentence="Event Highlights" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} />
+  <div className="-mt-40">
+    <TrueFocus sentence="Event Highlights" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} />
+  </div>
   <HorizontalCarousel />
       <Gallery />
       <Contact />
