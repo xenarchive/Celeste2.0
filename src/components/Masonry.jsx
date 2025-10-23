@@ -195,9 +195,8 @@ const Masonry = ({
         <div
           key={item.id}
           data-key={item.id}
-          className="absolute box-content"
-          style={{ willChange: 'transform, width, height, opacity' }}
-          onClick={() => window.open(item.url, '_blank', 'noopener')}
+          className="absolute box-content cursor-default"
+          style={{ willChange: 'transform, width, height, opacity', pointerEvents: 'auto' }}
           onMouseEnter={e => handleMouseEnter(item.id, e.currentTarget)}
           onMouseLeave={e => handleMouseLeave(item.id, e.currentTarget)}
         >
