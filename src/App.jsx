@@ -5,6 +5,7 @@ import NavBar from "./components/Navbar";
 import HorizontalCarousel from "./components/HorizontalCarousel";
 import Gallery from "./components/Gallery";
 import Timeline from "./components/Timeline";
+import Footer from "./components/Footer";
 import { Route, Routes } from 'react-router-dom';
 import RegistrationLink from './components/EventRegsitration';
 
@@ -60,6 +61,7 @@ function App() {
           <HorizontalCarousel />
           <Gallery onReady={() => setGalleryReady(true)} />
           <Timeline events={sampleEvents} startWhen={galleryReady} />
+          <Footer />
         </main>
       } />
       <Route path="/registration-link" element={<RegistrationLink />} />
