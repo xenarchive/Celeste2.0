@@ -1,8 +1,8 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect, useRef } from "react"
+import { motion, useInView } from "framer-motion"
 import { Calendar, MapPin, Users, ExternalLink } from "lucide-react"
 
 const EventTimeline = ({ events }) => {
@@ -111,7 +111,7 @@ const EventTimeline = ({ events }) => {
         transition={{ duration: 0.6 }}
         className="mb-16 text-center"
       >
-        <h2 className="mb lg text-3xl font-bold text-gray-300">Stay in sync with every stage of the event—because you won’t want to miss a single frame of the fun!</h2>
+        <h2 className="mb lg text-2xl text-gray-300">Stay in sync with every stage of the event—because you won’t want to miss a single frame of the fun!</h2>
       </motion.div>
 
       {/* Timeline Container */}
@@ -132,6 +132,10 @@ const EventTimeline = ({ events }) => {
                   {/* Content */}
                   <div className="w-1/2 px-8">
                     <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, margin: "-100px" }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
                       whileHover={{ scale: 1.02 }}
                       onMouseEnter={() => setExpandedId(event.id)}
                       onMouseLeave={() => setExpandedId(null)}
@@ -210,6 +214,10 @@ const EventTimeline = ({ events }) => {
 
                   {/* Card */}
                   <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, margin: "-100px" }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                     whileHover={{ scale: 1.02 }}
                     onMouseEnter={() => setExpandedId(event.id)}
                     onMouseLeave={() => setExpandedId(null)}
