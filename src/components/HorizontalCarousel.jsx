@@ -128,7 +128,7 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.5 }) => {
   }, [isPaused, speed]);
 
   return (
-    <section className="py-12">
+    <section id="events" className="py-12">
       <div className="container mx-auto">
     <h1>
       <TrueFocus sentence="Event Highlights" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} noTopMargin={true} />

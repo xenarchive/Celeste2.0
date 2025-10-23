@@ -48,7 +48,7 @@ const EventTimeline = ({ events }) => {
   }
 
   return (
-    <div className="w-full bg-black px-4 py-16 md:px-8">
+    <div id="timeline" className="w-full bg-black px-4 py-16 md:px-8">
       <style>{`
         .timeline-line {
           position: absolute;

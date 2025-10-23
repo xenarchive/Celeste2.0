@@ -83,7 +83,7 @@ const Hero = () => {
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
   return (
-    <div className="relative h-dvh w-screen overflow-x-hidden">
+    <div id="hero" className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
         <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
           {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
@@ -162,8 +162,7 @@ const Hero = () => {
                 title="Register Here"
                 leftIcon={<TiLocationArrow />}
                 containerClass="bg-yellow-400 flex-center gap-1 text-[20px] sm:text-[22px]"
-                href="https://v0-modern-web-page-xi.vercel.app/"
-                target="_blank"
+                href="/registration-link"
               />
               <Button
                 id="Download Brochure"

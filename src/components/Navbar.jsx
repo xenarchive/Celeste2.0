@@ -2,11 +2,12 @@ import clsx from "clsx";
 import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 // import { TiLocationArrow } from "react-icons/ti";
 
 // import Button from "./Button";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+const navItems = ["Home", "Honours", "Events", "Gallery", "Timeline", "Team"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -16,6 +17,9 @@ const NavBar = () => {
   // Refs for audio and navigation container
   const audioElementRef = useRef(null);
   const navContainerRef = useRef(null);
+
+  const location = useLocation();
+  const isMainPage = location.pathname === '/';
 
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
@@ -70,46 +74,49 @@ const NavBar = () => {
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and Product button */}
-          <div className="flex items-center gap-7">
+          <a href="#hero">
             <img src="/img/logo.png" alt="logo" className="w-10 md:w-20" />
-          </div>
-
-          {/* Navigation Links and Audio Button */}
-          <div className="flex h-full items-center">
-            <div className="hidden md:block">
-              {navItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={`#${item.toLowerCase()}`}
-                  className="nav-hover-btn"
-                >
-                  {item}
-                </a>
-              ))}
+          </a>
+          <div className="flex items-center gap-7">
+            {/* Navigation Links and Audio Button */}
+            <div className="flex h-full items-center">
+              <div className="hidden md:block">
+                {navItems.map((item, index) => (
+                  <a
+                    key={index}
+                    href={`${isMainPage ? '' : '/'}#${
+                      item === 'Home'
+                        ? 'hero'
+                        : item === 'Honours'
+                        ? 'about'
+                        : item === 'Team'
+                        ? 'contact'
+                        : item.toLowerCase()
+                    }`}
+                    className="nav-hover-btn"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+              <button
+                onClick={toggleAudioIndicator}
+                className="ml-10 flex items-center space-x-0.5"
+              >
+                <audio ref={audioElementRef} className="hidden" src="/audio/loop.mp3" loop />
+                {[1, 2, 3, 4].map((bar) => (
+                  <div
+                    key={bar}
+                    className={clsx("indicator-line", {
+                      active: isIndicatorActive,
+                    })}
+                    style={{
+                      animationDelay: `${bar * 0.1}s`,
+                    }}
+                  />
+                ))}
+              </button>
             </div>
-
-            <button
-              onClick={toggleAudioIndicator}
-              className="ml-10 flex items-center space-x-0.5"
-            >
-              <audio
-                ref={audioElementRef}
-                className="hidden"
-                src="/audio/loop.mp3"
-                loop
-              />
-              {[1, 2, 3, 4].map((bar) => (
-                <div
-                  key={bar}
-                  className={clsx("indicator-line", {
-                    active: isIndicatorActive,
-                  })}
-                  style={{
-                    animationDelay: `${bar * 0.1}s`,
-                  }}
-                />
-              ))}
-            </button>
           </div>
         </nav>
       </header>

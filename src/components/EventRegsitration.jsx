@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable tailwindcss/no-custom-classname */
+import NavBar from './Navbar';
 import TrueFocus from './TrueFocus';
 
 const events = [
@@ -60,37 +61,40 @@ const events = [
 
 export default function EventRegsitration() {
   return (
-    <div className="min-h-screen w-screen bg-black text-white px-6 py-12">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-8">
-          <TrueFocus sentence="REGISTER NOW!" manualMode={false} blurAmount={6} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} />
-        </div>
+    <>
+      <NavBar />
+      <div id="events" className="min-h-screen w-screen bg-black px-6 py-12 text-white">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 pt-24">
+            <TrueFocus sentence="REGISTER NOW!" manualMode={false} blurAmount={6} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} />
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {events.map((evt, index) => (
-            <a
-              key={evt.id}
-              href={evt.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group block rounded-2xl overflow-hidden shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.01] border-2 border-amber-500/50 hover:border-amber-400 relative after:absolute after:inset-0 after:rounded-2xl after:shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:after:shadow-[0_0_25px_rgba(245,158,11,0.5)] ${
-                index === events.length - 1 ? 'md:col-span-2 md:w-1/2 md:mx-auto' : ''
-              }`}
-            >
-              <div className="relative bg-gradient-to-br from-neutral-900/70 to-neutral-900/40 p-6 h-36 flex flex-col justify-center group-hover:bg-gradient-to-br group-hover:from-amber-900/20 group-hover:to-neutral-900/40 transition-all duration-500">
-                <h3 className="text-xl font-semibold mb-1 relative z-10">{evt.title}</h3>
-                <p className="text-sm text-gray-300 relative z-10">{evt.subtitle}</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {events.map((evt, index) => (
+              <a
+                key={evt.id}
+                href={evt.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group relative block overflow-hidden rounded-2xl border-2 border-amber-500/50 shadow-lg transition-all duration-300 after:absolute after:inset-0 after:rounded-2xl after:shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:-translate-y-1 hover:scale-[1.01] hover:border-amber-400 hover:after:shadow-[0_0_25px_rgba(245,158,11,0.5)]${
+                  index === events.length - 1 ? 'md:col-span-2 md:mx-auto md:w-1/2' : ''
+                }`}
+              >
+                <div className="relative flex h-36 flex-col justify-center bg-gradient-to-br from-neutral-900/70 to-neutral-900/40 p-6 transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-amber-900/20 group-hover:to-neutral-900/40">
+                  <h3 className="relative z-10 mb-1 text-xl font-semibold">{evt.title}</h3>
+                  <p className="relative z-10 text-sm text-gray-300">{evt.subtitle}</p>
 
-                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <div className="absolute left-1/2 top-1/2 w-[200%] h-[200%] bg-amber-500/10 rounded-full filter blur-[100px] transform -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-transparent mix-blend-overlay rounded-2xl" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-amber-500/10 to-transparent mix-blend-color-dodge rounded-2xl" />
+                  <div className="pointer-events-none absolute inset-0 opacity-0 transition-all duration-500 group-hover:opacity-100">
+                    <div className="animate-pulse-slow absolute left-1/2 top-1/2 size-[200%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-500/10 blur-[100px]" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-500/20 to-transparent mix-blend-overlay" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-amber-500/10 to-transparent mix-blend-color-dodge" />
+                  </div>
                 </div>
-              </div>
-            </a>
-          ))}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
