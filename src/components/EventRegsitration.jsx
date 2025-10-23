@@ -57,6 +57,12 @@ const events = [
     subtitle: 'Create your cinematic story',
     link: 'https://forms.gle/1zLDc1AdbcooxJaZ9',
   },
+    {
+    id: 10,
+    title: 'Photogeraphy Exhibition',
+    subtitle: 'erjrt',
+    link: 'https://forms.gle/',
+  },
 ];
 
 export default function EventRegsitration() {

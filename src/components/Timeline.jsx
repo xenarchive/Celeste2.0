@@ -2,9 +2,9 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { motion, useInView } from "framer-motion"
-import { Calendar, MapPin, Users, ExternalLink } from "lucide-react"
+import { Calendar, MapPin, Users, ExternalLink, Clock } from "lucide-react"
 import BlurText from "./BlurText"
 const EventTimeline = ({ events }) => {
   const [expandedId, setExpandedId] = useState(null)
@@ -162,6 +162,10 @@ const EventTimeline = ({ events }) => {
                           <span className="text-sm">{event.date}</span>
                         </div>
                         <div className="flex items-center gap-2 text-gray-200">
+                          <Clock className="size-4 text-cyan-500" />
+                          <span className="text-sm">{event.time}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-200">
                           <MapPin className="size-4 text-cyan-500" />
                           <span className="text-sm">{event.venue}</span>
                         </div>
@@ -243,6 +247,10 @@ const EventTimeline = ({ events }) => {
                       <div className="flex items-center gap-2 text-gray-200">
                         <Calendar className="size-4 text-amber-500" />
                         <span className="text-sm">{event.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-200">
+                        <Clock className="size-4 text-cyan-500" />
+                        <span className="text-sm">{event.time}</span>
                       </div>
                       <div className="flex items-center gap-2 text-gray-200">
                         <MapPin className="size-4 text-cyan-500" />
