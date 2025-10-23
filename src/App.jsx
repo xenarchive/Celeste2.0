@@ -1,12 +1,11 @@
 import About from "./components/About";
 import Hero from "./components/Hero";
 import NavBar from "./components/Navbar";
-import Features from "./components/Features";
 import HorizontalCarousel from "./components/HorizontalCarousel";
 import TrueFocus from "./components/TrueFocus";
 import Gallery from "./components/Gallery";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+
+
 
 function App() {
   return (
@@ -20,8 +19,6 @@ function App() {
   </div>
   <HorizontalCarousel />
       <Gallery />
-      <Contact />
-      <Footer />
     </main>
   );
 }
