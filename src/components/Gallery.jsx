@@ -1,4 +1,5 @@
 import BlurText from "./BlurText";
+import { useState } from "react";
 import Masonry from "./Masonry";
 import img1 from "../../public/img/img1.jpg";
 import img2 from "../../public/img/img2.jpg";
@@ -15,7 +16,7 @@ import img12 from "../../public/img/img12.jpg";
 import img13 from "../../public/img/img13.jpg";
 import img14 from "../../public/img/img14.jpg";
 import img15 from "../../public/img/img15.jpg";
-const Gallery = () => {
+const Gallery = ({ onReady }) => {
   const galleryItems = [
     {
       id: "1",
@@ -109,6 +110,8 @@ const Gallery = () => {
     }
   ];
 
+  const [masonryHeight, setMasonryHeight] = useState(800);
+
   return (
     <div id="gallery" className="min-h-dvh w-screen bg-black">
       <div className="flex flex-col items-center py-10 pb-24">
@@ -122,8 +125,10 @@ const Gallery = () => {
           className="bbh-sans-bogle-regular special-font pointer-events-none relative z-10 mb-20 max-w-full text-center text-[40px] leading-[0.9] text-white mix-blend-difference sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]"
         />
         
-        <div className="mx-auto h-[800px] w-full max-w-[90%]">
+        <div className="mx-auto w-full max-w-[90%] transition-all duration-500" style={{ height: `${masonryHeight}px` }}>
           <Masonry
+            onHeightChange={setMasonryHeight}
+            onReady={onReady}
             items={galleryItems}
             ease="power3.out"
             duration={0.6}

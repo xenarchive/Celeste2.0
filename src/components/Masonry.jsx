@@ -56,7 +56,9 @@ const Masonry = ({
   scaleOnHover = true,
   hoverScale = 0.95,
   blurToFocus = true,
-  colorShiftOnHover = false
+  colorShiftOnHover = false,
+  onHeightChange,
+  onReady
 }) => {
   const columns = useMedia(
     ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)', '(min-width:400px)'],
@@ -97,8 +99,11 @@ const Masonry = ({
   };
 
   useEffect(() => {
-    preloadImages(items.map(i => i.img)).then(() => setImagesReady(true));
-  }, [items]);
+    preloadImages(items.map(i => i.img)).then(() => {
+      setImagesReady(true);
+      onReady?.();
+    });
+  }, [items, onReady]);
 
   const grid = useMemo(() => {
     if (!width) return [];
@@ -117,6 +122,11 @@ const Masonry = ({
       return { ...child, x, y, w: columnWidth, h: height };
     });
   }, [columns, items, width]);
+
+  useEffect(() => {
+    const maxHeight = Math.max(...grid.map(item => item.y + item.h));
+    onHeightChange?.(maxHeight);
+  }, [grid, onHeightChange]);
 
   const hasMounted = useRef(false);
 

@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable tailwindcss/no-custom-classname */
 "use client"
 
 import { useState, useEffect, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Calendar, MapPin, Users, ExternalLink } from "lucide-react"
-
+import BlurText from "./BlurText"
 const EventTimeline = ({ events }) => {
   const [expandedId, setExpandedId] = useState(null)
   const [isMobile, setIsMobile] = useState(false)
@@ -111,6 +112,17 @@ const EventTimeline = ({ events }) => {
         transition={{ duration: 0.6 }}
         className="mb-16 text-center"
       >
+         <h1 className="bbh-sans-bogle-regular special-font pointer-events-none relative z-10 mb-20 max-w-full text-center text-[40px] leading-[0.9] text-white mix-blend-difference sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]">
+        <BlurText
+          text="Event Timeline"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={() => console.log('Animation completed!')}
+          noWrap
+          className="bbh-sans-bogle-regular special-font pointer-events-none relative z-10 mb-20 max-w-full text-center text-[40px] leading-[0.9] text-white mix-blend-difference sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]"
+        />
+        </h1>
         <h2 className="mb lg text-2xl text-gray-300">Stay in sync with every stage of the event—because you won’t want to miss a single frame of the fun!</h2>
       </motion.div>
 
@@ -204,7 +216,7 @@ const EventTimeline = ({ events }) => {
             {/* Events Stack */}
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-8 pl-20">
               {events.map((event) => (
-                <motion.div key={event.id} variants={itemVariants}>
+                <motion.div key={event.id} variants={itemVariants} className="relative">
                   {/* Timeline Node */}
                   <motion.div
                     whileHover={{ scale: 1.2 }}

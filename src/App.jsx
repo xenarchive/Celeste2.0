@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import About from "./components/About";
 import Hero from "./components/Hero";
 import NavBar from "./components/Navbar";
 import HorizontalCarousel from "./components/HorizontalCarousel";
-import TrueFocus from "./components/TrueFocus";
 import Gallery from "./components/Gallery";
 import Timeline from "./components/Timeline";
 
@@ -47,22 +47,16 @@ const sampleEvents = [
 ]
 
 function App() {
+  const [galleryReady, setGalleryReady] = useState(false);
+
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
       <NavBar />
       <Hero />
       <About />
-      <div className="-mt-40">
-        <TrueFocus sentence="Event Highlights" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} />
-      </div>
       <HorizontalCarousel />
-      <Gallery />
-      <div className="-mt-40">
-        <TrueFocus sentence="Event Timline" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} />
-      </div>
-      <div className="min-h-screen bg-slate-950">
-      <Timeline events={sampleEvents} />
-      </div>
+      <Gallery onReady={() => setGalleryReady(true)} />
+      <Timeline events={sampleEvents} startWhen={galleryReady} />
 
     </main>
   );

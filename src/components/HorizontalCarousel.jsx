@@ -1,5 +1,6 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import { useEffect, useRef, useState } from "react";
+import TrueFocus from "./TrueFocus";
 
 // Simple card data — replace src/img paths with your real images/videos
 const sampleCards = [
@@ -129,6 +130,9 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.5 }) => {
   return (
     <section className="py-12">
       <div className="container mx-auto">
+    <h1>
+      <TrueFocus sentence="Event Highlights" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} noTopMargin={true} />
+    </h1>
         <div
           ref={trackRef}
           onMouseEnter={() => setIsPaused(true)}
