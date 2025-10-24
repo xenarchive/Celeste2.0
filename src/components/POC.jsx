@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { FaUser, FaPhoneAlt, FaCalendarAlt, FaClock, FaInfoCircle } from 'react-icons/fa';
 import BlurText from './BlurText';
 const eventsData = [
@@ -108,7 +108,7 @@ const eventsData = [
     ],
   },
   {
-    id: 8,
+    id: 9,
     eventName: 'Art Exhibition: Chhobi Rajar Deshe',
     date: 'Nov 7-8, 2025',
     time: 'All Day',
@@ -121,7 +121,7 @@ const eventsData = [
     ],
   },
   {
-    id: 9,
+    id: 10,
     eventName: 'Photography Exhibition: Framebondi Jibon',
     date: 'Nov 7-8, 2025',
     time: 'All Day',
@@ -135,34 +135,37 @@ const eventsData = [
   },
 ];
 
-const FlipCard = ({ event }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const handleHover = (hovering) => {
-    setIsFlipped(hovering);
-  };
+const Card = ({ event, isHovered, onHover }) => {
+  const cardRef = useRef(null);
+  const isInView = useInView(cardRef, { once: false, amount: 0.3 });
 
   return (
-    <div
+    <motion.div
+      ref={cardRef}
       className="relative h-64 w-full cursor-pointer"
-      onMouseEnter={() => handleHover(true)}
-      onMouseLeave={() => handleHover(false)}
-      style={{ perspective: '1000px' }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
+      transition={{ duration: 0.6, ease: 'easeOut', delay: event.id * 0.1 }}
+      whileHover={{ y: -10 }}
+      onMouseEnter={() => onHover(event.id)}
+      onMouseLeave={() => onHover(null)}
+      style={{
+        filter: isHovered && !onHover ? 'blur(4px)' : 'none',
+        transition: 'filter 0.3s ease-in-out',
+      }}
     >
       <motion.div
         className="relative size-full"
-        style={{ transformStyle: 'preserve-3d' }}
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        animate={{ scale: isHovered ? 1.05 : 1 }}
+        transition={{ duration: 0.3 }}
       >
-        {/* Front Side */}
         <div
           className="absolute flex size-full flex-col items-center justify-center rounded-lg border-2 border-solid p-6 text-white shadow-lg"
           style={{
             background: 'linear-gradient(to bottom right, rgb(25, 25, 25), rgb(15, 15, 15))',
             borderColor: 'rgb(80, 80, 80)',
-            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)',
-            backfaceVisibility: 'hidden',
+            boxShadow: isHovered ? '0 20px 25px -5px rgba(217, 119, 6, 0.3)' : '0 10px 15px -3px rgba(0, 0, 0, 0.5)',
+            transition: 'box-shadow 0.3s ease-in-out',
           }}
         >
           <h3 className="mb-4 text-2xl font-bold text-yellow-400">{event.eventName}</h3>
@@ -181,49 +184,14 @@ const FlipCard = ({ event }) => {
             ))}
           </div>
         </div>
-
-        {/* Back Side */}
-        <div
-          className="absolute flex size-full flex-col items-center justify-center rounded-lg border-2 border-solid p-6 text-white shadow-lg"
-          style={{
-            background: 'linear-gradient(to bottom right, rgb(35, 35, 35), rgb(20, 20, 20))',
-            borderColor: 'rgba(217, 119, 6, 0.8)',
-            boxShadow: '0 20px 25px -5px rgba(217, 119, 6, 0.3)',
-            backfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg)',
-          }}
-        >
-          <h4 className="mb-4 text-xl font-semibold text-yellow-400">{event.eventName}</h4>
-          <div className="flex flex-col items-start gap-3 text-left">
-            <div className="flex items-center gap-3">
-              <FaCalendarAlt className="text-orange-400" />
-              <div>
-                <p className="text-sm font-medium">Date</p>
-                <p className="text-xs text-gray-400">{event.date}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <FaClock className="text-orange-400" />
-              <div>
-                <p className="text-sm font-medium">Time</p>
-                <p className="text-xs text-gray-400">{event.time}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <FaInfoCircle className="text-orange-400" />
-              <div>
-                <p className="text-sm font-medium">Description</p>
-                <p className="text-xs text-gray-400">{event.description}</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
 const PocSection = () => {
+  const [hoveredId, setHoveredId] = useState(null);
+
   return (
     <section id="poc" className="bg-black py-20">
       <div className="container mx-auto px-4">
@@ -251,7 +219,12 @@ const PocSection = () => {
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {eventsData.map((event) => (
-            <FlipCard key={event.id} event={event} />
+            <Card 
+              key={event.id} 
+              event={event} 
+              isHovered={hoveredId === event.id}
+              onHover={setHoveredId}
+            />
           ))}
         </div>
       </div>
