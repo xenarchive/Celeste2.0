@@ -96,7 +96,7 @@ const SpecialThanks = () => {
         <p className="lg mb-12 mt-4 text-center text-2xl text-gray-300 ">
             With heartfelt gratitude, we extend our sincere thanks to the visionaries of Celesté 2.0, whose guidance, encouragement, and belief in possibilities have transformed it into more than an event—a collective dream brought to life.
           </p>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
           {thanksMembers.map((member, index) => (
             <ThanksCard
               key={index}
