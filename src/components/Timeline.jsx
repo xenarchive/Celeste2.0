@@ -208,15 +208,6 @@ const EventTimeline = ({ events }) => {
                       </motion.div>
                     </motion.div>
                   </div>
-
-                  {/* Timeline Node */}
-                  <div className="flex w-0 justify-center">
-                    <motion.div
-                      whileHover={{ scale: 1.3 }}
-                      className="size-4 rounded-full border-4 border-black bg-gradient-to-r from-amber-500 to-cyan-500 shadow-lg"
-                      style={{ boxShadow: "0 0 20px rgba(217, 119, 6, 0.5)" }}
-                    />
-                  </div>
                 </motion.div>
               ))}
             </motion.div>
@@ -229,16 +220,14 @@ const EventTimeline = ({ events }) => {
             <div className="timeline-line-mobile" />
 
             {/* Events Stack */}
-            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-8 pl-20">
+            <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-8 pl-14 pr-4 sm:pl-20 sm:pr-0"
+        >
               {events.map((event) => (
                 <motion.div key={event.id} variants={itemVariants} className="relative">
-                  {/* Timeline Node */}
-                  <motion.div
-                    whileHover={{ scale: 1.2 }}
-                    className="absolute left-2 size-8 rounded-full border-4 border-black bg-gradient-to-r from-amber-500 to-cyan-500 shadow-lg"
-                    style={{ boxShadow: "0 0 20px rgba(217, 119, 6, 0.5)" }}
-                  />
-
                   {/* Card */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -249,7 +238,7 @@ const EventTimeline = ({ events }) => {
                     onMouseEnter={() => setExpandedId(event.id)}
                     onMouseLeave={() => setExpandedId(null)}
                     onTouchStart={() => setExpandedId(expandedId === event.id ? null : event.id)}
-                    className="event-card"
+                    className="event-card w-full max-w-[90vw] sm:max-w-[80vw]"
                   >
                     <h3 className="mb-2 text-lg font-bold text-white">{event.name}</h3>
 

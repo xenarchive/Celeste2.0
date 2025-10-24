@@ -10,14 +10,13 @@ const About = () => {
           <p>
             Join Pavasana for this cinematic journey.
           </p>
-          <div className="flex w-full justify-center">
+          <div className="flex w-full justify-center px-4">
             <div className="bbh-sans-bogle-regular special-font mt-5 max-w-full text-center text-[40px] leading-[0.9] sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]">
               <BlurText
                 text={"A tribute to "}
                 delay={150}
                 animateBy="words"
                 direction="top"
-                noWrap
                 className="inline text-white"
               />
               <BlurText
@@ -25,7 +24,6 @@ const About = () => {
                 delay={150}
                 animateBy="words"
                 direction="top"
-                noWrap
                 className="inline text-yellow-400"
               />
             </div>

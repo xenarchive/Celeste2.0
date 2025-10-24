@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FaUser, FaPhoneAlt, FaCalendarAlt, FaClock, FaInfoCircle } from 'react-icons/fa';
+import { FaUser, FaPhoneAlt } from 'react-icons/fa';
 import BlurText from './BlurText';
 const eventsData = [
   {

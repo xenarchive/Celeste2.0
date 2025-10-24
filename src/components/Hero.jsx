@@ -142,8 +142,8 @@ const Hero = () => {
 
         <div className="pointer-events-none absolute inset-0 z-30 bg-black/60"></div>
 
-        <div className="absolute left-0 top-0 z-[60] size-full pointer-events-none">
-          <div className="mt-24 px-5 sm:px-10 pointer-events-auto">
+        <div className="pointer-events-none absolute left-0 top-0 z-[60] size-full">
+          <div className="pointer-events-auto mt-24 px-5 sm:px-10">
             <h1 className="mb-6 font-serif text-7xl font-bold tracking-tight text-[#EFB642] md:text-9xl ">
               Celesté 2.0
             </h1>
@@ -153,7 +153,7 @@ const Hero = () => {
               <br /> A Festival of Film, Photography, and Enduring Bengali Art.
             </p>
 
-            <div className="flex flex-wrap gap-4 z-[70]">
+            <div className="z-[70] flex flex-wrap gap-4">
               <Button
                 id="Register Here"
                 title="Register Here"

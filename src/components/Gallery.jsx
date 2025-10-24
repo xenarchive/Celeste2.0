@@ -117,7 +117,7 @@ const Gallery = ({ onReady }) => {
       <div className="flex flex-col items-center py-10 pb-24">
               <div className="bbh-sans-bogle-regular special-font mb-10 mt-5 max-w-full text-center text-[40px] leading-[0.9] sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]">
               <BlurText
-                text={"Celeste 1.0 "}
+                text={"Celeste "}
                 delay={150}
                 animateBy="words"
                 direction="top"

@@ -117,50 +117,53 @@ const NavBar = () => {
                   );
                 })}
               </div>
-              {/* Hamburger Icon for Mobile (fixed top-right on mobile) */}
-              <button
-                className={clsx(
-                  "md:hidden flex flex-col justify-center items-center w-10 h-10",
-                  // position at top-right for mobile only
-                  "fixed top-4 right-4 z-60",
-                  // small offset on larger screens (becomes relative/hidden by md)
-                )}
-                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                onClick={() => setIsMenuOpen((s) => !s)}
-              >
-                {/* Transform into X when open */}
-                <span
+              <div className="flex items-center md:hidden">
+                {/* Hamburger Icon for Mobile (fixed top-right on mobile) */}
+                <button
+                  // eslint-disable-next-line tailwindcss/no-custom-classname
                   className={clsx(
-                    "block w-7 h-0.5 mb-1 rounded transition-all duration-300",
-                    {
-                      // closed: three parallel yellow bars; open: top bar rotates
-                      "bg-amber-300 translate-y-0 rotate-0": !isMenuOpen,
-                      "bg-amber-300 rotate-45 translate-y-1.5": isMenuOpen,
-                    }
+                    "flex size-10 flex-col items-center justify-center",
+                    // position at top-right for mobile only
+                    "z-60 fixed right-20 top-4",
+                    // small offset on larger screens (becomes relative/hidden by md)
                   )}
-                />
-                <span
-                  className={clsx(
-                    "block w-7 h-0.5 mb-1 rounded transition-all duration-300",
-                    {
-                      "bg-amber-300": !isMenuOpen,
-                      "bg-transparent scale-0": isMenuOpen,
-                    }
-                  )}
-                />
-                <span
-                  className={clsx(
-                    "block w-7 h-0.5 rounded transition-all duration-300",
-                    {
-                      "bg-amber-300": !isMenuOpen,
-                      "bg-amber-300 -rotate-45 -translate-y-1.5": isMenuOpen,
-                    }
-                  )}
-                />
-              </button>
+                  aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                  onClick={() => setIsMenuOpen((s) => !s)}
+                >
+                  {/* Transform into X when open */}
+                  <span
+                    className={clsx(
+                      "mb-1 block h-0.5 w-7 rounded transition-all duration-300",
+                      {
+                        // closed: three parallel yellow bars; open: top bar rotates
+                        "bg-amber-300 translate-y-0 rotate-0": !isMenuOpen,
+                        "bg-amber-300 rotate-45 translate-y-1.5": isMenuOpen,
+                      }
+                    )}
+                  />
+                  <span
+                    className={clsx(
+                      "mb-1 block h-0.5 w-7 rounded transition-all duration-300",
+                      {
+                        "bg-amber-300": !isMenuOpen,
+                        "bg-transparent scale-0": isMenuOpen,
+                      }
+                    )}
+                  />
+                  <span
+                    className={clsx(
+                      "block h-0.5 w-7 rounded transition-all duration-300",
+                      {
+                        "bg-amber-300": !isMenuOpen,
+                        "bg-amber-300 -rotate-45 -translate-y-1.5": isMenuOpen,
+                      }
+                    )}
+                  />
+                </button>
+              </div>
               <button
                 onClick={toggleAudioIndicator}
-                className="ml-10 flex items-center space-x-0.5"
+                className="ml-4 flex items-center space-x-0.5 md:ml-10"
               >
                 <audio ref={audioElementRef} className="hidden" src="/audio/loop.mp3" loop />
                 {[1, 2, 3, 4].map((bar) => (
@@ -182,7 +185,7 @@ const NavBar = () => {
         <div
           ref={menuRef}
           className={clsx(
-            "fixed top-0 right-0 h-screen w-64 shadow-lg z-[999] transition-transform duration-300 md:hidden",
+            "fixed right-0 top-0 z-[999] h-screen w-64 shadow-lg transition-transform duration-300 md:hidden",
             {
               // slide from right
               'translate-x-0': isMenuOpen,
@@ -193,19 +196,20 @@ const NavBar = () => {
         >
           {/* Menu background is black per spec */}
           <div className="absolute inset-0 bg-black" />
-          <div className="flex justify-end p-4 relative z-10">
+          <div className="relative z-10 flex justify-end p-4">
               <button
               aria-label="Close menu"
-              className="w-8 h-8 flex items-center justify-center relative"
+              // eslint-disable-next-line tailwindcss/enforces-shorthand
+              className="relative flex h-8 w-8 items-center justify-center"
               onClick={() => setIsMenuOpen(false)}
             >
-              <span className="block w-6 h-0.5 bg-amber-300 rotate-45 absolute" style={{ top: '50%' }} />
-              <span className="block w-6 h-0.5 bg-amber-300 -rotate-45 absolute" style={{ top: '50%' }} />
+              <span className="absolute block h-0.5 w-6 rotate-45 bg-amber-300" style={{ top: '50%' }} />
+              <span className="absolute block h-0.5 w-6 -rotate-45 bg-amber-300" style={{ top: '50%' }} />
             </button>
           </div>
-          <div className="flex flex-col items-center mt-10 gap-6 relative z-10">
+          <div className="relative z-10 mt-10 flex flex-col items-center gap-6">
             {navItems.map((item, index) => {
-              const common = "text-amber-300 text-lg transition-colors duration-200 hover:text-orange-400";
+              const common = "relative text-white text-lg transition-colors duration-200 hover:text-orange-400 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:bg-amber-400 after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100";
               if (item === 'Team') {
                 return (
                   <Link key={index} to="/team" className={common} onClick={() => setIsMenuOpen(false)}>
@@ -244,7 +248,8 @@ const NavBar = () => {
         {/* Overlay when menu is open */}
         {isMenuOpen && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-40 z-[998] md:hidden"
+            // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+            className="fixed inset-0 z-[998] bg-black bg-opacity-40 md:hidden"
             onClick={() => setIsMenuOpen(false)}
           />
         )}
