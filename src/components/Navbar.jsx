@@ -18,6 +18,10 @@ const NavBar = () => {
   const location = useLocation();
   const isMainPage = location.pathname === '/';
 
+    // Hamburger menu state
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const menuRef = useRef(null);
+
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -77,6 +81,7 @@ const NavBar = () => {
           <div className="flex items-center gap-7">
             {/* Navigation Links and Audio Button */}
             <div className="flex h-full items-center">
+              {/* Desktop Nav Links */}
               <div className="hidden md:block">
                 {navItems.map((item, index) => {
                   if (item === 'Team') {
@@ -112,6 +117,47 @@ const NavBar = () => {
                   );
                 })}
               </div>
+              {/* Hamburger Icon for Mobile (fixed top-right on mobile) */}
+              <button
+                className={clsx(
+                  "md:hidden flex flex-col justify-center items-center w-10 h-10",
+                  // position at top-right for mobile only
+                  "fixed top-4 right-4 z-60",
+                  // small offset on larger screens (becomes relative/hidden by md)
+                )}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                onClick={() => setIsMenuOpen((s) => !s)}
+              >
+                {/* Transform into X when open */}
+                <span
+                  className={clsx(
+                    "block w-7 h-0.5 mb-1 rounded transition-all duration-300",
+                    {
+                      // closed: three parallel yellow bars; open: top bar rotates
+                      "bg-amber-300 translate-y-0 rotate-0": !isMenuOpen,
+                      "bg-amber-300 rotate-45 translate-y-1.5": isMenuOpen,
+                    }
+                  )}
+                />
+                <span
+                  className={clsx(
+                    "block w-7 h-0.5 mb-1 rounded transition-all duration-300",
+                    {
+                      "bg-amber-300": !isMenuOpen,
+                      "bg-transparent scale-0": isMenuOpen,
+                    }
+                  )}
+                />
+                <span
+                  className={clsx(
+                    "block w-7 h-0.5 rounded transition-all duration-300",
+                    {
+                      "bg-amber-300": !isMenuOpen,
+                      "bg-amber-300 -rotate-45 -translate-y-1.5": isMenuOpen,
+                    }
+                  )}
+                />
+              </button>
               <button
                 onClick={toggleAudioIndicator}
                 className="ml-10 flex items-center space-x-0.5"
@@ -132,6 +178,76 @@ const NavBar = () => {
             </div>
           </div>
         </nav>
+        {/* Mobile Slide Menu */}
+        <div
+          ref={menuRef}
+          className={clsx(
+            "fixed top-0 right-0 h-screen w-64 shadow-lg z-[999] transition-transform duration-300 md:hidden",
+            {
+              // slide from right
+              'translate-x-0': isMenuOpen,
+              'translate-x-full': !isMenuOpen,
+            }
+          )}
+          style={{ willChange: 'transform' }}
+        >
+          {/* Menu background is black per spec */}
+          <div className="absolute inset-0 bg-black" />
+          <div className="flex justify-end p-4 relative z-10">
+              <button
+              aria-label="Close menu"
+              className="w-8 h-8 flex items-center justify-center relative"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <span className="block w-6 h-0.5 bg-amber-300 rotate-45 absolute" style={{ top: '50%' }} />
+              <span className="block w-6 h-0.5 bg-amber-300 -rotate-45 absolute" style={{ top: '50%' }} />
+            </button>
+          </div>
+          <div className="flex flex-col items-center mt-10 gap-6 relative z-10">
+            {navItems.map((item, index) => {
+              const common = "text-amber-300 text-lg transition-colors duration-200 hover:text-orange-400";
+              if (item === 'Team') {
+                return (
+                  <Link key={index} to="/team" className={common} onClick={() => setIsMenuOpen(false)}>
+                    {item}
+                  </Link>
+                );
+              }
+              if (item === 'Timeline') {
+                return (
+                  <Link key={index} to="/timeline" className={common} onClick={() => setIsMenuOpen(false)}>
+                    {item}
+                  </Link>
+                );
+              }
+              return (
+                <a
+                  key={index}
+                  href={`${isMainPage ? '' : '/'}#${
+                    item === 'Home'
+                      ? 'hero'
+                      : item === 'Honours'
+                      ? 'about'
+                      : item === 'Administration'
+                      ? 'special-thanks'
+                      : item === 'POCs'
+                      ? 'poc'
+                      : item.toLowerCase()
+                  }`}
+                  className={common}
+                  onClick={() => setIsMenuOpen(false)}
+                >{item}</a>
+              );
+            })}
+          </div>
+        </div>
+        {/* Overlay when menu is open */}
+        {isMenuOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-40 z-[998] md:hidden"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
       </header>
     </div>
   );
