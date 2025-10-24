@@ -10,6 +10,7 @@ import SpecialThanks from "./components/SpecialThanks";
 import { Route, Routes } from 'react-router-dom';
 import RegistrationLink from './components/EventRegsitration';
 import Team from './components/Team';
+import Details from "./components/Details";
 
 const sampleEvents = [
   {
@@ -127,8 +128,9 @@ function App() {
           <SpecialThanks />
           <HorizontalCarousel />
           <Gallery onReady={() => setGalleryReady(true)} />
-          <Timeline events={sampleEvents} startWhen={galleryReady} />
-          <Team />
+          <Details />
+          {/* <Timeline events={sampleEvents} startWhen={galleryReady} />
+          <Team /> */}
           <Footer />
         </main>
       } />
