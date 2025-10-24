@@ -76,12 +76,20 @@ const SpecialThanks = () => {
       <div className="container mx-auto px-4">
         <div className="bbh-sans-bogle-regular special-font mt-5 max-w-full text-center text-[40px] leading-[0.9] sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]">
         <BlurText
-                text={"Our Visionaries"}
+                text={"Our "}
                 delay={150}
                 animateBy="words"
                 direction="top"
                 noWrap
                 className="inline text-white"
+              />
+              <BlurText
+                text={"Visionaries"}
+                delay={150}
+                animateBy="words"
+                direction="top"
+                noWrap
+                className="inline text-yellow-400"
               />
           {/* <TrueFocus sentence="Our Visionaries" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} noTopMargin={true} /> */}
         </div>

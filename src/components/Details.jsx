@@ -1,4 +1,4 @@
-import BlurText from './BlurText';
+import TrueFocus from './TrueFocus';
 import { CalendarDaysIcon, MapPinIcon, ClockIcon, UsersIcon } from '@heroicons/react/24/outline';
 const handleMouseMove = (e) => {
     const card = e.currentTarget;
@@ -44,15 +44,9 @@ export default function Details() {
     <section id="details" className="w-full bg-black px-6 py-20 text-white">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10">
-        <BlurText
-          text="Event Details"
-          delay={150}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={() => console.log('Animation completed!')}
-          noWrap
-          className="bbh-sans-bogle-regular special-font pointer-events-none relative z-10 mb-20 max-w-full text-center text-[40px] leading-[0.9] text-white mix-blend-difference sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]"
-        />
+        <h1>
+      <TrueFocus sentence="Event Details" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} noTopMargin={true} />
+    </h1>
         </div>
 
         <style>{`

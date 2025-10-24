@@ -115,15 +115,24 @@ const Gallery = ({ onReady }) => {
   return (
     <div id="gallery" className="min-h-dvh w-screen bg-black">
       <div className="flex flex-col items-center py-10 pb-24">
-        <BlurText
-          text="Celeste Gallery"
-          delay={150}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={() => console.log('Animation completed!')}
-          noWrap
-          className="bbh-sans-bogle-regular special-font pointer-events-none relative z-10 mb-20 max-w-full text-center text-[40px] leading-[0.9] text-white mix-blend-difference sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]"
-        />
+              <div className="bbh-sans-bogle-regular special-font mb-10 mt-5 max-w-full text-center text-[40px] leading-[0.9] sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]">
+              <BlurText
+                text={"Celeste 1.0 "}
+                delay={150}
+                animateBy="words"
+                direction="top"
+                noWrap
+                className="inline text-white"
+              />
+              <BlurText
+                text={"Gallery"}
+                delay={150}
+                animateBy="words"
+                direction="top"
+                noWrap
+                className="inline text-yellow-400"
+              />
+            </div>
         
         <div className="mx-auto w-full max-w-[90%] transition-all duration-500" style={{ height: `${masonryHeight}px` }}>
           <Masonry

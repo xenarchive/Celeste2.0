@@ -1,6 +1,8 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import TrueFocus from './TrueFocus';
 import Button from './Button';
+import NavBar from './Navbar';
+import Footer from './Footer';
 // import team1 from "../../public/img/team/team1.jpg";
 // import team2 from "../../public/img/team/team2.jpg";
 // import team3 from "../../public/img/team/team3.jpg";
@@ -143,7 +145,8 @@ const Team = () => {
   ];
 
   return (
-    <section id = "contact" className="bg-black py-20">
+    <section id = "contact" className="mt-20">
+    <NavBar />
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
           <TrueFocus sentence="Meet Our Team" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} noTopMargin={true} />
@@ -155,6 +158,7 @@ const Team = () => {
           ))}
         </div>
       </div>
+      <div className="mt-20"><Footer /></div>
     </section>
   );
 };

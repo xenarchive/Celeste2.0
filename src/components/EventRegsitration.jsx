@@ -6,66 +6,66 @@ import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
 
 const events = [
-  {
+    {
     id: 1,
-    title: 'Fabric Painting',
-    subtitle: 'Express your creativity on fabric',
-    link: 'https://forms.gle/csrNH8RGSTMqLq3Y6',
-  },
-  {
-    id: 2,
-    title: 'Face Painting',
-    subtitle: 'Transform faces into art',
-    link: 'https://forms.gle/Y1y9gekrBCL5GH2NA',
-  },
-  {
-    id: 3,
-    title: 'Pot Painting',
-    subtitle: 'Create beautiful ceramic art',
+    title: 'Pot Painting: Matir Kella',
+    subtitle: "Let your creativity take root! Grab your brushes and turn simple pots into works of art—quirky, aesthetic, or wildly weird. Go classic or chaotic, just make sure your pot's got personality!",
     link: ' https://forms.gle/sCAtDdX5bsHSwvjTA',
   },
   {
-    id: 4,
-    title: 'Film Debate',
-    subtitle: 'Discuss and analyze cinema',
-    link: ' https://forms.gle/R29beA5ULSe7zGkq5',
+    id: 2,
+    title: 'Short Film Making:  Shilper Ayna',
+    subtitle: "Got a story to tell? Here's your spotlight! Script, shoot, and edit your own short film packed with emotion, creativity, and flair. Small runtime, big impact—your movie moment starts now!",
+    link: 'https://forms.gle/1zLDc1AdbcooxJaZ9',
   },
   {
-    id: 5,
-    title: 'Film Quiz',
-    subtitle: ' https://forms.gle/w3dhcs43iHq1PZx89',
-    link: 'https://forms.gle/w3dhcs43iHq1PZx89',
-  },
-  {
-    id: 6,
-    title: 'Exhibition',
-    subtitle: 'Showcase of artistic talent',
-    link: 'https://forms.gle/ie1Z8tGtSaQUQ5X48',
-  },
-  {
-    id: 7,
-    title: 'Cover Art',
-    subtitle: 'Reimagine iconic covers',
+    id: 3,
+    title: 'Cover Art: Echos of Ray',
+    subtitle: 'Judge a movie by your cover! Reimagine your favorite film posters with your own artistic twist—bold, minimal, dramatic, or totally wild. Let your creativity roll the credits in style!',
     link: ' https://forms.gle/GsX8tLEP6gUTmSgU9',
   },
   {
+    id: 4,
+    title: 'Face Painting: Ruper Rong',
+    subtitle: "Your face, your canvas! Whether it's a fierce tiger, a glittery galaxy, or your alter ego from another world, paint it loud and proud! It's messy, colorful, and guaranteed to turn heads (literally).",
+    link: 'https://forms.gle/Y1y9gekrBCL5GH2NA',
+  },
+  {
+    id: 5,
+    title: 'Film Debate: Charulata\'r Charcha',
+    subtitle: 'Lights, Camera, Argue! Battle it out over the best movies, epic plot twists, and Oscar-worthy performances. Defend your favorite film with passion, wit, and drama—because in this showdown, only the sharpest critics survive!',
+    link: ' https://forms.gle/R29beA5ULSe7zGkq5',
+  },
+  {
+    id: 6,
+    title: 'Film Quiz: Rahasya Bhed',
+    subtitle: 'Think you are a movie maniac? Prove your cinematic smarts in a quiz packed with iconic dialogues, legendary trivia, and wild behind-the-scenes moments. From Marvel to Ray—only the truest cinephile wins the frame!',
+    link: 'https://forms.gle/w3dhcs43iHq1PZx89',
+  },
+  {
+    id: 7,
+    title: 'Fabric Painting: Bastra Chitra',
+    subtitle: 'Unleash your inner Picasso—on fabric! Splatter, blend, and create magic with colors and patterns that scream you. Turn a plain cloth into a wearable masterpiece and let your art walk the runway of imagination!',
+    link: 'https://forms.gle/csrNH8RGSTMqLq3Y6',
+  },
+  {
     id: 8,
-    title: 'Reelomania',
-    subtitle: 'Celebrate the magic of cinema',
+    title: 'Reelomania: Ray o Reel',
+    subtitle: "Ready, Set, Shoot! Make a reel that's funny, fab, or just pure chaos. Whether it's cinematic magic or meme-worthy moments, let your creativity steal the scroll! Lights, Camera, Virality!",
     link: 'https://forms.gle/ptuDhMju7UhBd16S7',
   },
   {
     id: 9,
-    title: 'Short Film Making',
-    subtitle: 'Create your cinematic story',
-    link: 'https://forms.gle/1zLDc1AdbcooxJaZ9',
+    title: 'Art Exhibition: Chhobi Rajar Deshe',
+    subtitle: 'A creative wonderland awaits! Explore a gallery of imagination where every artwork, and design tells a story. Come get inspired, amazed, and maybe even a little awestruck!',
+    link: 'https://forms.gle/ie1Z8tGtSaQUQ5X48',
   },
-    {
+  {
     id: 10,
-    title: 'Photogeraphy Exhibition',
-    subtitle: 'erjrt',
-    link: 'https://forms.gle/',
-  },
+    title: 'Photography Exhibition: Framebondi Jibon',
+    subtitle: 'A creative wonderland awaits! Explore a gallery of imagination where every photo, and design tells a story. Come get inspired, amazed, and maybe even a little awestruck!',
+    link: 'https://forms.gle/u1xVQU1LWgnAVQ2RA',
+  }
 ];
 
 export default function EventRegsitration() {
@@ -116,7 +116,7 @@ export default function EventRegsitration() {
           </div>
         </div>
       </div>
-      <Footer />
+      <div className="mt-20"><Footer /></div>
     </>
   );
 }

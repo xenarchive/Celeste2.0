@@ -2,13 +2,9 @@ import clsx from "clsx";
 import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
-// import { TiLocationArrow } from "react-icons/ti";
+import { Link, useLocation } from "react-router-dom";
 
-// import Button from "./Button";
-
-//const navItems = ["Home", "Honours", "Adminitration", "Events", "Gallery", "Timeline", "Team"];
-const navItems = ["Home", "Honours", "Administration", "Events", "Gallery", "Details", "Team"];
+const navItems = ["Home", "Honours", "Administration", "Events", "Gallery", "Details", "POCs", "Team", "Timeline"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -82,25 +78,39 @@ const NavBar = () => {
             {/* Navigation Links and Audio Button */}
             <div className="flex h-full items-center">
               <div className="hidden md:block">
-                {navItems.map((item, index) => (
-                  <a
-                    key={index}
-                    href={`${isMainPage ? '' : '/'}#${
-                      item === 'Home'
-                        ? 'hero'
-                        : item === 'Honours'
-                        ? 'about'
-                        : item === 'Administration'
-                        ? 'special-thanks'
-                        : item === 'Team'
-                        ? 'POC'
-                        : item.toLowerCase()
-                    }`}
-                    className="nav-hover-btn"
-                  >
-                    {item}
-                  </a>
-                ))}
+                {navItems.map((item, index) => {
+                  if (item === 'Team') {
+                    return (
+                      <Link key={index} to="/team" className="nav-hover-btn">
+                        {item}
+                      </Link>
+                    );
+                  }
+                  if (item === 'Timeline') {
+                    return (
+                      <Link key={index} to="/timeline" className="nav-hover-btn">
+                        {item}
+                      </Link>
+                    );
+                  }
+                  return (
+                    <a
+                      key={index}
+                      href={`${isMainPage ? '' : '/'}#${
+                        item === 'Home'
+                          ? 'hero'
+                          : item === 'Honours'
+                          ? 'about'
+                          : item === 'Administration'
+                          ? 'special-thanks'
+                          : item === 'POCs'
+                          ? 'poc'
+                          : item.toLowerCase()
+                      }`}
+                      className="nav-hover-btn"
+                    >{item}</a>
+                  );
+                })}
               </div>
               <button
                 onClick={toggleAudioIndicator}
