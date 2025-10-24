@@ -13,7 +13,7 @@ const cards = [
     id: 1,
     icon: CalendarDaysIcon,
     title: 'Date',
-    content: 'November 07-08, 2025'
+    content: 'November 08-09, 2025'
   },
   {
     id: 2,
