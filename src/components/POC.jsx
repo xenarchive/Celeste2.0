@@ -18,7 +18,7 @@ const eventsData = [
   },
   {
     id: 2,
-    eventName: 'Cover Art: Echos of Ray',
+    eventName: 'Cover Art: Echoes of Ray',
     date: 'Nov 7, 2025',
     time: '03:00 PM - 04:00 PM',
     venue: 'Main Auditorium',

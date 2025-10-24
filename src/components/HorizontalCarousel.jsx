@@ -21,7 +21,7 @@ const sampleCards = [
   {
     id: 3,
     img: "img/event-10.jpg",
-    title: "Cover Art: Echos of Ray",
+    title: "Cover Art: Echoes of Ray",
     description: "Echoes of Ray celebrates the timeless prolificness of Satyajit Ray, inviting artists to re-imagine his world through design, crafting covers for films, books, or albums turning simplicity into storytelling. From analog strokes to digital finesse, each creation imparts dialogue between past and present, tradition and innovation, with every line, hue and frame echoing Ray's artistry.",
   },
   {

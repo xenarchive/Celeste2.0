@@ -20,7 +20,7 @@ const events = [
   },
   {
     id: 3,
-    title: 'Cover Art: Echos of Ray',
+    title: 'Cover Art: Echoes of Ray',
     subtitle: 'Judge a movie by your cover! Reimagine your favorite film posters with your own artistic twist—bold, minimal, dramatic, or totally wild. Let your creativity roll the credits in style!',
     link: ' https://forms.gle/GsX8tLEP6gUTmSgU9',
   },
