@@ -6,6 +6,7 @@ import HorizontalCarousel from "./components/HorizontalCarousel";
 import Gallery from "./components/Gallery";
 import Timeline from "./components/Timeline";
 import Footer from "./components/Footer";
+import SpecialThanks from "./components/SpecialThanks";
 import { Route, Routes } from 'react-router-dom';
 import RegistrationLink from './components/EventRegsitration';
 import Team from './components/Team';
@@ -15,20 +16,20 @@ const sampleEvents = [
     id: 1,
     name: "Matir Kella: Pot Painting",
     date: "November 8, 2025",
-    time: "To Be Announced",
+    time: "01:00 PM - 02:30 PM",
     venue: "To Be Announced",
     guests: "To Be Announced",
-    description: "Get ready for Matir Kella — a pot painting extravaganza celebrating imagination and storytelling in true Satyajit Ray style! Every plain clay pot conveys your canvas for whimsical worlds and vibrant adventures, where colors roar and brushstrokes sing. Let your creativity take root — go classic or chaotic, up and sure your pot’s got personality!",
+    description: "Get ready for Matir Kella, a pot painting extravaganza celebrating imagination and storytelling in true Satyajit Ray style! Every plain clay pot conveys your canvas for whimsical worlds and vibrant adventures, where colors roar and brushstrokes sing. Let your creativity take root, go classic or chaotic, up and sure your pot’s got personality!",
     registrationLink: "https://example.com/register",
   },
   {
     id: 2,
     name: "Echos of Ray: Cover Art",
-    date: "April 2, 2025",
-    time: "To Be Announced",
-    venue: "New York Tech Hub",
-    guests: "100 Participants",
-    description: "Hands-on workshop covering React, Next.js, and modern web development best practices.",
+    date: "November 8, 2025",
+    time: "03:00 PM - 04:00 PM",
+    venue: "To Be Announced",
+    guests: "To Be Announced",
+    description: "Echoes of Ray celebrates the timeless prolificness of Satyajit Ray, inviting artists to re-imagine his world through design, crafting covers for films, books, or albums turning simplicity into storytelling. From analog strokes to digital finesse, each creation imparts dialogue between past and present, tradition and innovation, with every line, hue and frame echoing Ray’s artistry.",
     registrationLink: "https://example.com/register",
   },
   {
@@ -36,9 +37,9 @@ const sampleEvents = [
     name: "Ruper Rong: Face Painting",
     date: "May 10, 2025",
     time: "To Be Announced",
-    venue: "Boston Innovation Center",
-    guests: "300+ Attendees",
-    description: "Explore the latest advancements in AI, machine learning, and their real-world applications.",
+    venue: "To Be Announced",
+    guests: "To Be Announced",
+    description: "Step into Ruper Rong, where brushes become wands and colors tell tales! Inspired by Satyajit Ray, this celebration of creativity and teamwork lets you transform faces into magical creatures, cinematic characters, or vibrant stories in just 60 minutes. Let your imagination run wild, paint loud and proud, and turn every face into a canvas of cinematic expression!",
     registrationLink: "https://example.com/register",
   },
   {
@@ -46,8 +47,8 @@ const sampleEvents = [
     name: "Shilper Ayna: Short Film",
     date: "June 5, 2025",
     time: "To Be Announced",
-    venue: "Austin Tech Park",
-    guests: "200 Founders",
+    venue: "To Be Announced",
+    guests: "To Be Announced",
     description: "Connect with fellow entrepreneurs, investors, and mentors in an exclusive networking environment.",
     registrationLink: "https://example.com/register",
   },
@@ -56,8 +57,8 @@ const sampleEvents = [
     name: "Charulata'r Charcha: Film Debate",
     date: "June 5, 2025",
     time: "To Be Announced",
-    venue: "Austin Tech Park",
-    guests: "200 Founders",
+    venue: "To Be Announced",
+    guests: "To Be Announced",
     description: "Connect with fellow entrepreneurs, investors, and mentors in an exclusive networking environment.",
     registrationLink: "https://example.com/register",
   },
@@ -66,8 +67,8 @@ const sampleEvents = [
     name: "Rahasya Bhed: Film Quiz",
     date: "June 5, 2025",
     time: "To Be Announced",
-    venue: "Austin Tech Park",
-    guests: "200 Founders",
+    venue: "To Be Announced",
+    guests: "To Be Announced",
     description: "Connect with fellow entrepreneurs, investors, and mentors in an exclusive networking environment.",
     registrationLink: "https://example.com/register",
   },
@@ -76,8 +77,8 @@ const sampleEvents = [
     name: "Bastra Chitra: Fabric Painting",
     date: "June 5, 2025",
     time: "To Be Announced",
-    venue: "Austin Tech Park",
-    guests: "200 Founders",
+    venue: "To Be Announced",
+    guests: "To Be Announced",
     description: "Connect with fellow entrepreneurs, investors, and mentors in an exclusive networking environment.",
     registrationLink: "https://example.com/register",
   },
@@ -86,8 +87,8 @@ const sampleEvents = [
     name: "Chhobi Rajar Deshe: Exhibition",
     date: "June 5, 2025",
     time: "To Be Announced",
-    venue: "Austin Tech Park",
-    guests: "200 Founders",
+    venue: "To Be Announced",
+    guests: "To Be Announced",
     description: "Connect with fellow entrepreneurs, investors, and mentors in an exclusive networking environment.",
     registrationLink: "https://example.com/register",
   },
@@ -96,8 +97,8 @@ const sampleEvents = [
     name: "Framebondi Jibon: Photography Exhibtiion",
     date: "June 5, 2025",
     time: "To Be Announced",
-    venue: "Austin Tech Park",
-    guests: "200 Founders",
+    venue: "To Be Announced",
+    guests: "To Be Announced",
     description: "Connect with fellow entrepreneurs, investors, and mentors in an exclusive networking environment.",
     registrationLink: "https://example.com/register",
   },
@@ -106,8 +107,8 @@ const sampleEvents = [
     name: "Ray o Reel: Campus-Wide Reel Challenge",
     date: "June 5, 2025",
     time: "To Be Announced",
-    venue: "Austin Tech Park",
-    guests: "200 Founders",
+    venue: "To Be Announced",
+    guests: "To Be Announced",
     description: "Connect with fellow entrepreneurs, investors, and mentors in an exclusive networking environment.",
     registrationLink: "https://example.com/register",
   },
@@ -123,6 +124,7 @@ function App() {
           <NavBar />
           <Hero />
           <About />
+          <SpecialThanks />
           <HorizontalCarousel />
           <Gallery onReady={() => setGalleryReady(true)} />
           <Timeline events={sampleEvents} startWhen={galleryReady} />

@@ -1,6 +1,8 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import { useEffect, useRef, useState } from "react";
 import TrueFocus from "./TrueFocus";
+import Button from "./Button";
+import { TiLocationArrow } from "react-icons/ti";
 
 // Simple card data — replace src/img paths with your real images/videos
 const sampleCards = [
@@ -91,7 +93,7 @@ const Card = ({ card, isPaused, isHoveredCard }) => {
   );
 };
 
-const HorizontalCarousel = ({ cards = sampleCards, speed = 0.5 }) => {
+const HorizontalCarousel = ({ cards = sampleCards, speed = 0.3 }) => {
   const trackRef = useRef(null);
   const rafRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
@@ -168,6 +170,19 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.5 }) => {
               <Card card={c} isPaused={isPaused} isHoveredCard={hoveredIndex === idx + cards.length} />
             </div>
           ))}
+        </div>
+        <div className="mt-12 flex flex-col items-center justify-center gap-6 px-4">
+          <p className="text-center text-xl text-gray-300">To know more about each event:</p>
+          <div className="flex flex-wrap gap-4">
+            <Button
+              id="Download Brochure"
+              title="Download Brochure"
+              leftIcon={<TiLocationArrow />}
+              containerClass="bg-yellow-400 flex-center gap-1 text-[20px] sm:text-[22px]"
+              href="https://drive.google.com/file/d/1U_i7vMgTeMI3sW1N3_mTOTLpZNNIIEnJ/view?usp=sharing"
+              target="_blank"
+            />
+          </div>
         </div>
       </div>
     </section>

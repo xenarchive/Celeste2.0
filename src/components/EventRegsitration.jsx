@@ -1,6 +1,9 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import NavBar from './Navbar';
 import TrueFocus from './TrueFocus';
+import Footer from './Footer';
+import Button from './Button';
+import { TiLocationArrow } from 'react-icons/ti';
 
 const events = [
   {
@@ -97,8 +100,23 @@ export default function EventRegsitration() {
               </a>
             ))}
           </div>
+
+          <div className="mt-16 flex flex-col items-center justify-center gap-6">
+            <p className="text-center text-xl text-gray-300">To know more about each event:</p>
+            <div className="flex flex-wrap gap-4">
+              <Button
+                id="Download Brochure"
+                title="Download Brochure"
+                leftIcon={<TiLocationArrow />}
+                containerClass="bg-yellow-400 flex-center gap-1 text-[20px] sm:text-[22px]"
+                href="https://drive.google.com/file/d/1U_i7vMgTeMI3sW1N3_mTOTLpZNNIIEnJ/view?usp=sharing"
+                target="_blank"
+              />
+            </div>
+          </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
