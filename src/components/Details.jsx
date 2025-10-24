@@ -1,24 +1,35 @@
 import BlurText from './BlurText';
 import { CalendarDaysIcon, MapPinIcon, ClockIcon, UsersIcon } from '@heroicons/react/24/outline';
-
+const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  };
 const cards = [
   {
     id: 1,
     icon: CalendarDaysIcon,
     title: 'Date',
-    content: 'March 15-17, 2025'
+    content: 'November 07-08, 2025'
   },
   {
     id: 2,
     icon: MapPinIcon,
     title: 'Venue',
-    content: 'National Gallery of Modern Art'
+    content: (
+      <a href="https://maps.app.goo.gl/JMH7EvMNovF7ZhHh9?g_st=aw" target="_blank" rel="noopener noreferrer" className="hover:underline">
+        Heritage Institute of Technology, Kolkata
+      </a>
+    )
   },
   {
     id: 3,
     icon: ClockIcon,
     title: 'Timings',
-    content: '10:00 AM - 8:00 PM'
+    content: '09:00 AM - 05:00 PM'
   },
   {
     id: 4,
@@ -30,41 +41,54 @@ const cards = [
 
 export default function Details() {
   return (
-    <section id="details" className="w-full bg-black py-20 px-6 text-white">
+    <section id="details" className="w-full bg-black px-6 py-20 text-white">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10">
-          <BlurText text="Event Details" className="text-center text-4xl md:text-5xl font-bold text-[#EFB642]" />
+        <BlurText
+          text="Event Details"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={() => console.log('Animation completed!')}
+          noWrap
+          className="bbh-sans-bogle-regular special-font pointer-events-none relative z-10 mb-20 max-w-full text-center text-[40px] leading-[0.9] text-white mix-blend-difference sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]"
+        />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <style>{`
+          .details-card {
+            background: linear-gradient(to bottom right, rgb(25, 25, 25), rgb(15, 15, 15));
+            border: 2px solid rgb(80, 80, 80);
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+          }
+
+          .details-card:hover {
+            border-color: rgba(217, 119, 6, 0.8);
+            box-shadow: 0 20px 25px -5px rgba(217, 119, 6, 0.3);
+            background: linear-gradient(to bottom right, rgb(35, 35, 35), rgb(20, 20, 20));
+          }
+        `}</style>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
           {cards.map((c) => {
             const Icon = c.icon;
             return (
               <article
                 key={c.id}
-                className="group relative overflow-hidden rounded-2xl border border-white/6 bg-neutral-900/40 p-6 h-56 transition-all duration-300 hover:scale-[1.01]"
+                onMouseMove={handleMouseMove}
+                style={{ '--mouse-x': '0px', '--mouse-y': '0px' }}
+                // eslint-disable-next-line tailwindcss/no-custom-classname
+                className="details-card relative h-56 overflow-hidden rounded-lg"
               >
-                {/* neon border glow */}
-                <div className="absolute -inset-0.5 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ boxShadow: '0 8px 30px rgba(245,158,11,0.14), 0 0 40px rgba(245,158,11,0.06)' }} />
-
-                {/* glare overlay */}
-                <div
-                  aria-hidden
-                  className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    background: 'radial-gradient(600px 200px at 20% 10%, rgba(255,255,255,0.06), transparent 20%), linear-gradient(180deg, rgba(255,255,255,0.01), transparent 40%)',
-                    mixBlendMode: 'overlay'
-                  }}
-                />
-
-                <div className="relative z-10 h-full flex flex-col justify-between">
+                <div className="relative z-10 flex h-full flex-col justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="inline-flex items-center justify-center rounded-md p-3 bg-black/30 border border-amber-500/30">
-                      <Icon className="h-8 w-8 text-amber-400" />
+                    <div className="inline-flex items-center justify-center rounded-md border border-amber-500/30 bg-black/30 p-3">
+                      <Icon className="size-8 text-amber-400" />
                     </div>
                     <div>
-                      <h4 className="text-xs uppercase text-white/60 tracking-wider">{c.title}</h4>
+                      <h4 className="text-xs uppercase tracking-wider text-white/60">{c.title}</h4>
                     </div>
                   </div>
 
@@ -80,7 +104,7 @@ export default function Details() {
         <div className="mt-8 flex justify-center">
           <a
             href="/registration-link"
-            className="inline-block rounded-md bg-yellow-400 px-6 py-3 text-black font-medium shadow-md hover:brightness-95"
+            className="inline-block rounded-md bg-yellow-400 px-6 py-3 font-medium text-black shadow-md hover:brightness-95"
           >
             Register Now
           </a>

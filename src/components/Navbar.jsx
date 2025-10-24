@@ -7,7 +7,8 @@ import { useLocation } from "react-router-dom";
 
 // import Button from "./Button";
 
-const navItems = ["Home", "Honours", "Events", "Gallery", "Timeline", "Team"];
+//const navItems = ["Home", "Honours", "Adminitration", "Events", "Gallery", "Timeline", "Team"];
+const navItems = ["Home", "Honours", "Administration", "Events", "Gallery", "Details", "Team"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -89,8 +90,10 @@ const NavBar = () => {
                         ? 'hero'
                         : item === 'Honours'
                         ? 'about'
+                        : item === 'Administration'
+                        ? 'special-thanks'
                         : item === 'Team'
-                        ? 'contact'
+                        ? 'POC'
                         : item.toLowerCase()
                     }`}
                     className="nav-hover-btn"
