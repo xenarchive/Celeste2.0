@@ -4,7 +4,15 @@ import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const navItems = ["Home", "Honours", "Administration", "Events", "Gallery", "Details", "POCs", "Team", "Timeline"];
+const navItems = [
+  "Home",
+  "Honours",
+  "Administration",
+  "Events",
+  "Gallery",
+  "Details",
+  "POCs",
+];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -16,11 +24,11 @@ const NavBar = () => {
   const navContainerRef = useRef(null);
 
   const location = useLocation();
-  const isMainPage = location.pathname === '/';
+  const isMainPage = location.pathname === "/";
 
-    // Hamburger menu state
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const menuRef = useRef(null);
+  // Hamburger menu state
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
@@ -84,16 +92,20 @@ const NavBar = () => {
               {/* Desktop Nav Links */}
               <div className="hidden md:block">
                 {navItems.map((item, index) => {
-                  if (item === 'Team') {
+                  if (item === "Team") {
                     return (
                       <Link key={index} to="/team" className="nav-hover-btn">
                         {item}
                       </Link>
                     );
                   }
-                  if (item === 'Timeline') {
+                  if (item === "Timeline") {
                     return (
-                      <Link key={index} to="/timeline" className="nav-hover-btn">
+                      <Link
+                        key={index}
+                        to="/timeline"
+                        className="nav-hover-btn"
+                      >
                         {item}
                       </Link>
                     );
@@ -101,19 +113,21 @@ const NavBar = () => {
                   return (
                     <a
                       key={index}
-                      href={`${isMainPage ? '' : '/'}#${
-                        item === 'Home'
-                          ? 'hero'
-                          : item === 'Honours'
-                          ? 'about'
-                          : item === 'Administration'
-                          ? 'special-thanks'
-                          : item === 'POCs'
-                          ? 'poc'
-                          : item.toLowerCase()
+                      href={`${isMainPage ? "" : "/"}#${
+                        item === "Home"
+                          ? "hero"
+                          : item === "Honours"
+                            ? "about"
+                            : item === "Administration"
+                              ? "special-thanks"
+                              : item === "POCs"
+                                ? "poc"
+                                : item.toLowerCase()
                       }`}
                       className="nav-hover-btn"
-                    >{item}</a>
+                    >
+                      {item}
+                    </a>
                   );
                 })}
               </div>
@@ -124,7 +138,7 @@ const NavBar = () => {
                   className={clsx(
                     "flex size-10 flex-col items-center justify-center",
                     // position at top-right for mobile only
-                    "z-60 fixed right-20 top-4",
+                    "z-60 fixed right-20 top-4"
                     // small offset on larger screens (becomes relative/hidden by md)
                   )}
                   aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -165,7 +179,12 @@ const NavBar = () => {
                 onClick={toggleAudioIndicator}
                 className="ml-4 flex items-center space-x-0.5 md:ml-10"
               >
-                <audio ref={audioElementRef} className="hidden" src="/audio/loop.mp3" loop />
+                <audio
+                  ref={audioElementRef}
+                  className="hidden"
+                  src="/audio/loop.mp3"
+                  loop
+                />
                 {[1, 2, 3, 4].map((bar) => (
                   <div
                     key={bar}
@@ -188,38 +207,55 @@ const NavBar = () => {
             "fixed right-0 top-0 z-[999] h-screen w-64 shadow-lg transition-transform duration-300 md:hidden",
             {
               // slide from right
-              'translate-x-0': isMenuOpen,
-              'translate-x-full': !isMenuOpen,
+              "translate-x-0": isMenuOpen,
+              "translate-x-full": !isMenuOpen,
             }
           )}
-          style={{ willChange: 'transform' }}
+          style={{ willChange: "transform" }}
         >
           {/* Menu background is black per spec */}
           <div className="absolute inset-0 bg-black" />
           <div className="relative z-10 flex justify-end p-4">
-              <button
+            <button
               aria-label="Close menu"
               // eslint-disable-next-line tailwindcss/enforces-shorthand
               className="relative flex h-8 w-8 items-center justify-center"
               onClick={() => setIsMenuOpen(false)}
             >
-              <span className="absolute block h-0.5 w-6 rotate-45 bg-amber-300" style={{ top: '50%' }} />
-              <span className="absolute block h-0.5 w-6 -rotate-45 bg-amber-300" style={{ top: '50%' }} />
+              <span
+                className="absolute block h-0.5 w-6 rotate-45 bg-amber-300"
+                style={{ top: "50%" }}
+              />
+              <span
+                className="absolute block h-0.5 w-6 -rotate-45 bg-amber-300"
+                style={{ top: "50%" }}
+              />
             </button>
           </div>
           <div className="relative z-10 mt-10 flex flex-col items-center gap-6">
             {navItems.map((item, index) => {
-              const common = "relative text-white text-lg transition-colors duration-200 hover:text-orange-400 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:bg-amber-400 after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100";
-              if (item === 'Team') {
+              const common =
+                "relative text-white text-lg transition-colors duration-200 hover:text-orange-400 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:bg-amber-400 after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100";
+              if (item === "Team") {
                 return (
-                  <Link key={index} to="/team" className={common} onClick={() => setIsMenuOpen(false)}>
+                  <Link
+                    key={index}
+                    to="/team"
+                    className={common}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     {item}
                   </Link>
                 );
               }
-              if (item === 'Timeline') {
+              if (item === "Timeline") {
                 return (
-                  <Link key={index} to="/timeline" className={common} onClick={() => setIsMenuOpen(false)}>
+                  <Link
+                    key={index}
+                    to="/timeline"
+                    className={common}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     {item}
                   </Link>
                 );
@@ -227,20 +263,22 @@ const NavBar = () => {
               return (
                 <a
                   key={index}
-                  href={`${isMainPage ? '' : '/'}#${
-                    item === 'Home'
-                      ? 'hero'
-                      : item === 'Honours'
-                      ? 'about'
-                      : item === 'Administration'
-                      ? 'special-thanks'
-                      : item === 'POCs'
-                      ? 'poc'
-                      : item.toLowerCase()
+                  href={`${isMainPage ? "" : "/"}#${
+                    item === "Home"
+                      ? "hero"
+                      : item === "Honours"
+                        ? "about"
+                        : item === "Administration"
+                          ? "special-thanks"
+                          : item === "POCs"
+                            ? "poc"
+                            : item.toLowerCase()
                   }`}
                   className={common}
                   onClick={() => setIsMenuOpen(false)}
-                >{item}</a>
+                >
+                  {item}
+                </a>
               );
             })}
           </div>

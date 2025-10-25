@@ -3,69 +3,89 @@ import { useEffect, useRef, useState } from "react";
 import TrueFocus from "./TrueFocus";
 import Button from "./Button";
 import { TiLocationArrow } from "react-icons/ti";
+import fabric from "../assests/fabric.png";
+import potPainting from "../assests/potPainting.png";
+import short from "../assests/shortFilm.png";
+import cover from "../assests/coverArt.png";
+import reel from "../assests/reels.png";
+import debate from "../assests/filmDebate.png";
+import facepainting from "../assests/facepainting.png";
+import filmquiz from "../assests/filmQuiz.png";
+import art from "../assests/art.png";
+import photo from "../assests/photo.png";
 
 // Simple card data — replace src/img paths with your real images/videos
 const sampleCards = [
   {
     id: 1,
-    img: "img/event-3.jpg",
+    img: potPainting,
     title: "Pot Painting: Matir Kella",
-    description: "Get ready for Matir Kella, a pot painting extravaganza celebrating imagination and storytelling in true Satyajit Ray style! Every plain clay pot conveys your canvas for whimsical worlds and vibrant adventures, where colors roar and brushstrokes sing. Let your creativity take root — go classic or chaotic, up and sure your pot's got personality!",
+    description:
+      "Get ready for Matir Kella, a pot painting extravaganza celebrating imagination and storytelling in true Satyajit Ray style! Every plain clay pot conveys your canvas for whimsical worlds and vibrant adventures, where colors roar and brushstrokes sing. Let your creativity take root — go classic or chaotic, up and sure your pot's got personality!",
   },
   {
     id: 2,
-    img: "img/event-9.jpg",
+    img: short,
     title: "Short Film Making: Shilper Ayna",
-    description: "Step into Shilper Ayna and explore the expressive world of filmmaking, inspired by the keen observation and lyrical storytelling of Satyajit Ray. Tell a powerful, personal story through your lenses, whether capturing daily life or tackling complex issues, let your lens be your voice. Script, shoot and edit with zeal and creativity to make a small runtime deliver a big impact!",
+    description:
+      "Step into Shilper Ayna and explore the expressive world of filmmaking, inspired by the keen observation and lyrical storytelling of Satyajit Ray. Tell a powerful, personal story through your lenses, whether capturing daily life or tackling complex issues, let your lens be your voice. Script, shoot and edit with zeal and creativity to make a small runtime deliver a big impact!",
   },
   {
     id: 3,
-    img: "img/event-10.jpg",
+    img: cover,
     title: "Cover Art: Echoes of Ray",
-    description: "Echoes of Ray celebrates the timeless prolificness of Satyajit Ray, inviting artists to re-imagine his world through design, crafting covers for films, books, or albums turning simplicity into storytelling. From analog strokes to digital finesse, each creation imparts dialogue between past and present, tradition and innovation, with every line, hue and frame echoing Ray's artistry.",
+    description:
+      "Echoes of Ray celebrates the timeless prolificness of Satyajit Ray, inviting artists to re-imagine his world through design, crafting covers for films, books, or albums turning simplicity into storytelling. From analog strokes to digital finesse, each creation imparts dialogue between past and present, tradition and innovation, with every line, hue and frame echoing Ray's artistry.",
   },
   {
     id: 4,
-    img: "img/event-2.jpg",
+    img: facepainting,
     title: "Face Painting: Ruper Rong",
-    description: "Step into Ruper Rong, where brushes become wands and colors tell tales! Inspired by Satyajit Ray, this celebration of creativity and teamwork lets you transform faces into magical creatures, cinematic characters, or vibrant stories in just 60 minutes. Let your imagination run wild, paint loud and proud, and turn every face into a canvas of cinematic expression!",
+    description:
+      "Step into Ruper Rong, where brushes become wands and colors tell tales! Inspired by Satyajit Ray, this celebration of creativity and teamwork lets you transform faces into magical creatures, cinematic characters, or vibrant stories in just 60 minutes. Let your imagination run wild, paint loud and proud, and turn every face into a canvas of cinematic expression!",
   },
   {
     id: 5,
-    img: "img/event-4.jpg",
+    img: debate,
     title: "Film Debate: Charulata'r Charcha",
-    description: "Step into Charulata'r Charcha, a film debate celebrating cinema, storytelling, and sharp thinking paving the Satyajit Ray style! Teams will explore characters, plots and cinematic magic, from Goopy & Bagha's mischief to Charulata's emotional depths, debating with insight, wit, and creativity. Defend your favorite films with passion and flair, for the sharpest critics shall survive!",
+    description:
+      "Step into Charulata'r Charcha, a film debate celebrating cinema, storytelling, and sharp thinking paving the Satyajit Ray style! Teams will explore characters, plots and cinematic magic, from Goopy & Bagha's mischief to Charulata's emotional depths, debating with insight, wit, and creativity. Defend your favorite films with passion and flair, for the sharpest critics shall survive!",
   },
-    {
+  {
     id: 6,
-    img: "img/event-5.jpg",
+    img: filmquiz,
     title: "Film Quiz: Rahasya Bhed",
-    description: "Step into Rahasya Bhed, the ultimate film trivia challenge for true movie enthusiasts! Explore your knowledge, challenge your peers and celebrate cinema, from timeless classics to modern masterpieces. Get your partner, improve fast, and prove your cinematic smarts with iconic dialogues, legendary trivia and behind-the-scenes secret, only the truest cinephile wins!",
+    description:
+      "Step into Rahasya Bhed, the ultimate film trivia challenge for true movie enthusiasts! Explore your knowledge, challenge your peers and celebrate cinema, from timeless classics to modern masterpieces. Get your partner, improve fast, and prove your cinematic smarts with iconic dialogues, legendary trivia and behind-the-scenes secret, only the truest cinephile wins!",
   },
   {
     id: 7,
-    img: "img/event-1.jpg",
+    img: fabric,
     title: "Fabric Painting: Bastra Chitra",
-    description: "Dive into Bastra Chitra, where brush strokes become storytellers and fabrics turn into magical canvases! Inspired by Satyajit Ray, teams transform plain fabric into vivid stories, be it a Goopy & Bagha adventure or a scene from Charulata, or a whimsical original tale. Splatter, blend and create wearable masterpieces letting your imagination run wild crafting your art to walk the runway of creativity!",
+    description:
+      "Dive into Bastra Chitra, where brush strokes become storytellers and fabrics turn into magical canvases! Inspired by Satyajit Ray, teams transform plain fabric into vivid stories, be it a Goopy & Bagha adventure or a scene from Charulata, or a whimsical original tale. Splatter, blend and create wearable masterpieces letting your imagination run wild crafting your art to walk the runway of creativity!",
   },
   {
     id: 8,
-    img: "img/event-8.jpg",
+    img: reel,
     title: "Reelomania: Ray o Reel",
-    description: "Step into Ray o Reel, a campus challenge celebrating visual storytelling inspired by Satyajit Ray. Use your go-to devices to craft a captivating short reel, channeling Ray’s eye for detail and narrative depth. Make it funny, fab, or chaotic, and turn everyday campus life (or anything else) into a cinematic story that steals the scroll!",
+    description:
+      "Step into Ray o Reel, a campus challenge celebrating visual storytelling inspired by Satyajit Ray. Use your go-to devices to craft a captivating short reel, channeling Ray’s eye for detail and narrative depth. Make it funny, fab, or chaotic, and turn everyday campus life (or anything else) into a cinematic story that steals the scroll!",
   },
   {
     id: 9,
-    img: "img/event-6.jpg",
+    img: art,
     title: "Art Exhibition: Chhobi Rajar Deshe ",
-    description: "A creative wonderland awaits! Explore a gallery of imagination where every artwork, and design tells a story. Come get inspired, amazed, and maybe even a little awestruck!",
+    description:
+      "A creative wonderland awaits! Explore a gallery of imagination where every artwork, and design tells a story. Come get inspired, amazed, and maybe even a little awestruck!",
   },
   {
     id: 10,
-    img: "img/event-7.jpg",
+    img: photo,
     title: "Photogrpahy Exhibition: Framebondi Jibon",
-    description: "A creative wonderland awaits! Explore a gallery of imagination where every photo, and design tells a story. Come get inspired, amazed, and maybe even a little awestruck!",
-  }
+    description:
+      "A creative wonderland awaits! Explore a gallery of imagination where every photo, and design tells a story. Come get inspired, amazed, and maybe even a little awestruck!",
+  },
 ];
 
 // eslint-disable-next-line no-unused-vars
@@ -82,14 +102,20 @@ const Card = ({ card, isPaused, isHoveredCard }) => {
           src={card.img}
           className="size-full object-cover transition-transform duration-700 ease-out"
           alt={card.title}
-          style={{ transform: isHoveredCard ? "translateX(-12%)" : "translateX(0)" }}
+          style={{
+            transform: isHoveredCard ? "translateX(-12%)" : "translateX(0)",
+          }}
         />
       </div>
       <div className="p-4">
-        <h3 className="mb-2 font-zentry text-xl font-black text-yellow-400">{card.title}</h3>
+        <h3 className="mb-2 font-zentry text-xl font-black text-yellow-400">
+          {card.title}
+        </h3>
         <div
           className={`overflow-hidden transition-all duration-500 ${
-            isHoveredCard ? "max-h-40 translate-y-0 opacity-100" : "max-h-0 -translate-y-2 opacity-0"
+            isHoveredCard
+              ? "max-h-40 translate-y-0 opacity-100"
+              : "max-h-0 -translate-y-2 opacity-0"
           }`}
         >
           <p className={`text-sm text-yellow-400`}>{card.description}</p>
@@ -99,7 +125,7 @@ const Card = ({ card, isPaused, isHoveredCard }) => {
   );
 };
 
-const HorizontalCarousel = ({ cards = sampleCards, speed = 0.3 }) => {
+const HorizontalCarousel = ({ cards = sampleCards, speed = 0.15 }) => {
   const trackRef = useRef(null);
   const rafRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
@@ -138,9 +164,17 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.3 }) => {
   return (
     <section id="events" className="py-12">
       <div className="container mx-auto">
-    <h1>
-      <TrueFocus sentence="Event Highlights" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} noTopMargin={true} />
-    </h1>
+        <h1>
+          <TrueFocus
+            sentence="Event Highlights"
+            manualMode={false}
+            blurAmount={5}
+            borderColor="#F59E0B"
+            animationDuration={0.6}
+            pauseBetweenAnimations={0.8}
+            noTopMargin={true}
+          />
+        </h1>
         <div
           ref={trackRef}
           onMouseEnter={() => setIsPaused(true)}
@@ -156,10 +190,16 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.3 }) => {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
               className={`transition-filter duration-300 ${
-                hoveredIndex !== null && hoveredIndex !== idx ? "scale-95 blur-sm" : ""
+                hoveredIndex !== null && hoveredIndex !== idx
+                  ? "scale-95 blur-sm"
+                  : ""
               }`}
             >
-              <Card card={c} isPaused={isPaused} isHoveredCard={hoveredIndex === idx} />
+              <Card
+                card={c}
+                isPaused={isPaused}
+                isHoveredCard={hoveredIndex === idx}
+              />
             </div>
           ))}
 
@@ -170,15 +210,23 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.3 }) => {
               onMouseEnter={() => setHoveredIndex(idx + cards.length)}
               onMouseLeave={() => setHoveredIndex(null)}
               className={`transition-filter duration-300 ${
-                hoveredIndex !== null && hoveredIndex !== idx + cards.length ? "scale-95 blur-sm" : ""
+                hoveredIndex !== null && hoveredIndex !== idx + cards.length
+                  ? "scale-95 blur-sm"
+                  : ""
               }`}
             >
-              <Card card={c} isPaused={isPaused} isHoveredCard={hoveredIndex === idx + cards.length} />
+              <Card
+                card={c}
+                isPaused={isPaused}
+                isHoveredCard={hoveredIndex === idx + cards.length}
+              />
             </div>
           ))}
         </div>
         <div className="mt-12 flex flex-col items-center justify-center gap-6 px-4">
-          <p className="text-center text-xl text-gray-300">To know more about each event:</p>
+          <p className="text-center text-xl text-gray-300">
+            To know more about each event:
+          </p>
           <div className="flex flex-wrap gap-4">
             <Button
               id="Download Brochure"

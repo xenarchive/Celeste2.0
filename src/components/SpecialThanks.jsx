@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import BlurText from './BlurText';
+import BlurText from "./BlurText";
 
 import ceo from "../../public/img/ceo.jpg";
 import principal from "../../public/img/principal.jpg";
@@ -11,8 +11,8 @@ const ThanksCard = ({ name, description, img }) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
   };
 
   return (
@@ -35,17 +35,15 @@ const ThanksCard = ({ name, description, img }) => {
       `}</style>
       <div
         onMouseMove={handleMouseMove}
-        style={{ '--mouse-x': '0px', '--mouse-y': '0px' }}
+        style={{ "--mouse-x": "0px", "--mouse-y": "0px" }}
         className="team-card flex h-full flex-col items-center justify-center overflow-hidden rounded-lg"
       >
         <div className="mx-auto mb-4 size-32 overflow-hidden rounded-full border-4 border-orange-500/80">
-          <img
-            src={img}
-            alt={name}
-            className="size-full object-cover"
-          />
+          <img src={img} alt={name} className="size-full object-cover" />
         </div>
-        <h3 className="mb-1 text-center text-xl font-bold text-white">{name}</h3>
+        <h3 className="mb-1 text-center text-xl font-bold text-white">
+          {name}
+        </h3>
         <p className="text-center text-sm text-gray-400">{description}</p>
       </div>
     </div>
@@ -73,29 +71,31 @@ const SpecialThanks = () => {
 
   return (
     <section id="special-thanks" className="bg-black py-20">
-      <div className="container mx-auto px-4">
-        <div className="bbh-sans-bogle-regular special-font mt-5 max-w-full text-center text-[40px] leading-[0.9] sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]">
-        <BlurText
-                text={"Our "}
-                delay={150}
-                animateBy="words"
-                direction="top"
-                noWrap
-                className="inline text-white"
-              />
-              <BlurText
-                text={"Visionaries"}
-                delay={150}
-                animateBy="words"
-                direction="top"
-                noWrap
-                className="inline text-yellow-400"
-              />
+      <div className="container mx-auto px-4 ">
+        <div className="bbh-sans-bogle-regular special-font mt-5 max-w-full text-center text-[50px] leading-[0.9] sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[140px]">
+          <BlurText
+            text={"Our "}
+            delay={150}
+            animateBy="words"
+            direction="top"
+            noWrap
+            className="inline text-white"
+          />
+          <BlurText
+            text={"Visionaries"}
+            delay={150}
+            animateBy="words"
+            direction="top"
+            noWrap
+            className="inline text-yellow-400"
+          />
           {/* <TrueFocus sentence="Our Visionaries" manualMode={false} blurAmount={5} borderColor="#F59E0B" animationDuration={0.6} pauseBetweenAnimations={0.8} noTopMargin={true} /> */}
         </div>
-        <p className="lg mb-12 mt-4 text-center text-2xl text-gray-300 ">
-            With heartfelt gratitude, we extend our sincere thanks to the visionaries of Celesté 2.0, whose guidance, encouragement, and belief in possibilities have transformed it into more than an event—a collective dream brought to life.
-          </p>
+        <p className="lg mb-12 mt-4 text-center text-lg text-gray-300 ">
+          With immense gratitude, we thank the visionaries of Celesté 2.0. Their
+          guidance and belief turned the event into a collective dream brought
+          to life.
+        </p>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
           {thanksMembers.map((member, index) => (
             <ThanksCard
