@@ -109,7 +109,7 @@ export default function EventRegsitration() {
                 title="Download Brochure"
                 leftIcon={<TiLocationArrow />}
                 containerClass="bg-yellow-400 flex-center gap-1 text-[20px] sm:text-[22px]"
-                href="https://drive.google.com/file/d/1U_i7vMgTeMI3sW1N3_mTOTLpZNNIIEnJ/view?usp=sharing"
+                href="https://drive.google.com/file/d/15VVuBjfDBqNiBoy98H_b4KkDDmeqNXVc/view?usp=sharing"
                 target="_blank"
               />
             </div>

@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import TrueFocus from "./TrueFocus";
 import Button from "./Button";
 import { TiLocationArrow } from "react-icons/ti";
-import fabric from "../assests/fabric.png";
-import potPainting from "../assests/potPainting.png";
-import short from "../assests/shortFilm.png";
+import fabric from "../assests/fabric.jpg";
+import potPainting from "../assests/potPainting.jpg";
+import short from "../assests/shortFilm.jpg";
 import cover from "../assests/coverArt.png";
-import reel from "../assests/reels.png";
-import debate from "../assests/filmDebate.png";
+import reel from "../assests/reels.jpg";
+import debate from "../assests/filmDebate.jpg";
 import facepainting from "../assests/facepainting.png";
 import filmquiz from "../assests/filmQuiz.png";
 import art from "../assests/art.png";
@@ -100,11 +100,8 @@ const Card = ({ card, isPaused, isHoveredCard }) => {
       <div className="h-48 w-full overflow-hidden bg-gray-900 md:h-64 lg:h-72">
         <img
           src={card.img}
-          className="size-full object-cover transition-transform duration-700 ease-out"
+          className="size-full object-cover"
           alt={card.title}
-          style={{
-            transform: isHoveredCard ? "translateX(-12%)" : "translateX(0)",
-          }}
         />
       </div>
       <div className="p-4">
@@ -187,9 +184,13 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.15 }) => {
           {cards.map((c, idx) => (
             <div
               key={c.id}
+              onClick={() => {
+                setIsPaused(true);
+                setHoveredIndex(hoveredIndex === idx ? null : idx);
+              }}
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className={`transition-filter duration-300 ${
+              className={`transition-filter duration-300 cursor-pointer ${
                 hoveredIndex !== null && hoveredIndex !== idx
                   ? "scale-95 blur-sm"
                   : ""
@@ -207,9 +208,13 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.15 }) => {
           {cards.map((c, idx) => (
             <div
               key={`dup-${c.id}`}
+              onClick={() => {
+                setIsPaused(true);
+                setHoveredIndex(hoveredIndex === idx + cards.length ? null : idx + cards.length);
+              }}
               onMouseEnter={() => setHoveredIndex(idx + cards.length)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className={`transition-filter duration-300 ${
+              className={`transition-filter duration-300 cursor-pointer ${
                 hoveredIndex !== null && hoveredIndex !== idx + cards.length
                   ? "scale-95 blur-sm"
                   : ""
@@ -233,7 +238,7 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.15 }) => {
               title="Download Brochure"
               leftIcon={<TiLocationArrow />}
               containerClass="bg-yellow-400 flex-center gap-1 text-[20px] sm:text-[22px]"
-              href="https://drive.google.com/file/d/1U_i7vMgTeMI3sW1N3_mTOTLpZNNIIEnJ/view?usp=sharing"
+              href="https://drive.google.com/file/d/15VVuBjfDBqNiBoy98H_b4KkDDmeqNXVc/view?usp=sharing"
               target="_blank"
             />
           </div>
