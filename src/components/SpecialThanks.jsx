@@ -63,7 +63,7 @@ const SpecialThanks = () => {
       img: principal,
     },
     {
-      name: "Mr. Arvind Srivasatava",
+      name: "Mr. Arvind Srivastava",
       description: "Joint Registrar, Heritage Institute of Technology",
       img: registrar,
     },

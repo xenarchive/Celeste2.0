@@ -5,7 +5,6 @@ import { TiLocationArrow } from "react-icons/ti";
 import { useEffect, useRef, useState } from "react";
 
 import Button from "./Button";
-import VideoPreview from "./VideoPreview";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +16,8 @@ const Hero = () => {
   const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideos = 4;
-  const nextVdRef = useRef(null);
+  const mainVideoRef = useRef(null);
+  const previewVideoRef = useRef(null);
 
   const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1);
@@ -29,10 +29,14 @@ const Hero = () => {
     }
   }, [loadedVideos]);
 
-  const handleMiniVdClick = () => {
+  const goToNextVideo = () => {
     setHasClicked(true);
-
     setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
+  };
+
+  const handleVideoEnded = () => {
+    // Automatically play the next video when the current one ends
+    goToNextVideo();
   };
 
   useGSAP(
@@ -46,7 +50,7 @@ const Hero = () => {
           height: "100%",
           duration: 1,
           ease: "power1.inOut",
-          onStart: () => nextVdRef.current.play(),
+          onStart: () => mainVideoRef.current.play(),
         });
         gsap.from("#current-video", {
           transformOrigin: "center center",
@@ -101,40 +105,41 @@ const Hero = () => {
       >
         <div>
           <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
-            <VideoPreview>
-              <div
-                onClick={handleMiniVdClick}
-                className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
-              >
-                <video
-                  ref={nextVdRef}
-                  src={getVideoSrc((currentIndex % totalVideos) + 1)}
-                  loop
-                  muted
-                  id="current-video"
-                  className="size-64 origin-center scale-150 object-cover object-center"
-                  onLoadedData={handleVideoLoad}
-                />
-              </div>
-            </VideoPreview>
+            <div
+              onClick={goToNextVideo}
+              className="flex-center group size-full origin-center scale-50 cursor-pointer text-white opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
+            >
+              <video
+                ref={previewVideoRef}
+                src={getVideoSrc((currentIndex % totalVideos) + 1)}
+                muted
+                id="current-video"
+                className="size-64 origin-center scale-150 object-cover object-center"
+                onLoadedData={handleVideoLoad}
+              />
+            </div>
+            <div className="absolute-center pointer-events-none z-50 flex flex-col items-center text-white">
+              {/* <p className="font-semibold">Click to skip</p> */}
+              {/* <TiArrowRight className="size-8" /> */}
+            </div>
           </div>
 
           <video
-            ref={nextVdRef}
+            ref={mainVideoRef}
             src={getVideoSrc(currentIndex)}
-            loop
             muted
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
+            onEnded={handleVideoEnded}
           />
           <video
             src={getVideoSrc(
               currentIndex === totalVideos - 1 ? 1 : currentIndex
             )}
             autoPlay
-            loop
             muted
+            onEnded={handleVideoEnded}
             className="absolute left-0 top-0 size-full object-cover object-center"
             onLoadedData={handleVideoLoad}
           />
