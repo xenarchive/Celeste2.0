@@ -11,9 +11,9 @@ const eventsData = [
     venue: 'Amphitheatre',
     description: 'Unleash your creativity on clay pots in this vibrant painting event.',
     pocs: [
-      { name: 'Aarav Sharma', phone: '+91 98765 43210' },
-      { name: 'Priya Singh', phone: '+91 98765 43211' },
-      { name: 'Rohan Gupta', phone: '+91 98765 43212' },
+      { name: 'Priyam Sarkar', phone: '7584987553 ' },
+      { name: 'Sriza Ghosh', phone: '7029036156' },
+      { name: 'Kaninika De', phone: '9123938497' },
     ],
   },
   {
@@ -24,9 +24,9 @@ const eventsData = [
     venue: 'Main Auditorium',
     description: 'Re-imagine iconic cover art inspired by the legendary Satyajit Ray.',
     pocs: [
-      { name: 'Sneha Patel', phone: '+91 98765 43213' },
-      { name: 'Vikram Kumar', phone: '+91 98765 43214' },
-      { name: 'Anjali Mehta', phone: '+91 98765 43215' },
+      { name: 'Prithika Chakraborty', phone: '8240660937' },
+      { name: 'Tiasha Ganguly', phone: '8100492611' },
+      { name: 'Aranya Basu', phone: '7044576568' },
     ],
   },
   {
@@ -37,9 +37,9 @@ const eventsData = [
     venue: 'Central Garden',
     description: 'Transform faces into living canvases of art and imagination.',
     pocs: [
-      { name: 'Aditya Verma', phone: '+91 98765 43216' },
-      { name: 'Isha Reddy', phone: '+91 98765 43217' },
-      { name: 'Karan Joshi', phone: '+91 98765 43218' },
+      { name: 'Srinjoy Dey', phone: '8240081301' },
+      { name: 'Suchana Laha', phone: '8583060942' },
+      { name: 'Tamojit Das', phone: '7439010664' },
     ],
   },
   {
@@ -50,9 +50,9 @@ const eventsData = [
     venue: 'Seminar Hall 1',
     description: 'Showcase your storytelling prowess through the lens of a camera.',
     pocs: [
-      { name: 'Neha Desai', phone: '+91 98765 43219' },
-      { name: 'Arjun Nair', phone: '+91 98765 43220' },
-      { name: 'Meera Iyer', phone: '+91 98765 43221' },
+      { name: 'Apurba Saha', phone: '7980418284' },
+      { name: 'Dipanjan Pal', phone: '8927734731' },
+      { name: 'Prantik Kundu', phone: '9477092167' },
     ],
   },
   {
@@ -63,9 +63,9 @@ const eventsData = [
     venue: 'Seminar Hall 2',
     description: 'Engage in a spirited debate on the nuances of classic and modern cinema.',
     pocs: [
-      { name: 'Rajat Malhotra', phone: '+91 98765 43222' },
-      { name: 'Sonia Agarwal', phone: '+91 98765 43223' },
-      { name: 'Vivek Menon', phone: '+91 98765 43224' },
+      { name: 'Soumyadeep Jana', phone: '9874642542' },
+      { name: 'Rajarshi Mishra', phone: '9433017751' },
+      { name: ' Shambaditya Sarkar', phone: '8240749177' },
     ],
   },
   {
@@ -76,9 +76,9 @@ const eventsData = [
     venue: 'VLTC Complex',
     description: 'Test your cinematic knowledge in this thrilling and fast-paced quiz.',
     pocs: [
-      { name: 'Deepak Singh', phone: '+91 98765 43225' },
-      { name: 'Pooja Sharma', phone: '+91 98765 43226' },
-      { name: 'Amit Kumar', phone: '+91 98765 43227' },
+      { name: 'Sanjhdiya Swetlana', phone: '9038046486' },
+      { name: 'Pratyush Pan', phone: '8250411785' },
+      { name: 'Purbita Mitra', phone: '6289482115' },
     ],
   },
   {
@@ -89,9 +89,9 @@ const eventsData = [
     venue: 'Workshop Area',
     description: 'Bring your fabric to life with colors and creative designs.',
     pocs: [
-      { name: 'Sunita Rao', phone: '+91 98765 43228' },
-      { name: 'Manish Gupta', phone: '+91 98765 43229' },
-      { name: 'Geeta Devi', phone: '+91 98765 43230' },
+      { name: 'Debopriya Ghosh', phone: '7679364134' },
+      { name: 'Suchana Maity', phone: '9733002749' },
+      { name: ' Soumili Basak', phone: '6290456089' },
     ],
   },
     {
@@ -102,9 +102,9 @@ const eventsData = [
     venue: 'Online & On-Campus',
     description: 'Create captivating reels inspired by the cinematic genius of Ray.',
     pocs: [
-      { name: 'Shah Rukh Khan', phone: '+91 98765 43237' },
-      { name: 'Kajol Devgan', phone: '+91 98765 43238' },
-      { name: 'Rani Mukerji', phone: '+91 98765 43239' },
+      { name: 'Devaditya Goswami', phone: '8167880744' },
+      { name: 'Rudraneel Sarkar', phone: '9073478561' },
+      { name: 'Debayan Bhowmik', phone: '8582891966' },
     ],
   },
   {
@@ -115,9 +115,9 @@ const eventsData = [
     venue: 'Exhibition Hall',
     description: 'A curated exhibition of stunning artworks from talented artists.',
     pocs: [
-      { name: 'Rajesh Khanna', phone: '+91 98765 43231' },
-      { name: 'Kavita Singh', phone: '+91 98765 43232' },
-      { name: 'Anil Kapoor', phone: '+91 98765 43233' },
+      { name: 'Sayan Pradhan', phone: '8981009973' },
+      { name: 'Avijnan Purkait', phone: '6290986642' },
+      { name: 'Debargha Samata', phone: '8777786405' },
     ],
   },
   {
@@ -128,9 +128,9 @@ const eventsData = [
     venue: 'Gallery Walk',
     description: 'Capture life in frames and tell stories through your photographs.',
     pocs: [
-      { name: 'Sanjay Dutt', phone: '+91 98765 43234' },
-      { name: 'Madhuri Dixit', phone: '+91 98765 43235' },
-      { name: 'Salman Khan', phone: '+91 98765 43236' },
+      { name: 'Sayan Pradhan', phone: '8981009973' },
+      { name: 'Avijnan Purkait', phone: '6290986642' },
+      { name: 'Debargha Samata', phone: '8777786405' },
     ],
   },
 ];
