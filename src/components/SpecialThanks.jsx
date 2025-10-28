@@ -4,6 +4,9 @@ import BlurText from "./BlurText";
 import ceo from "../../public/img/ceo.jpg";
 import principal from "../../public/img/principal.jpg";
 import registrar from "../../public/img/registrar.jpg";
+import prof1 from "../assests/sushobon.jpeg";
+import prof2 from "../assests/prof2.jpeg";
+import prof3 from "../assests/prof3.jpeg";
 
 const ThanksCard = ({ name, description, img }) => {
   const handleMouseMove = (e) => {
@@ -66,6 +69,24 @@ const SpecialThanks = () => {
       name: "Mr. Arvind Srivastava",
       description: "Joint Registrar, Heritage Institute of Technology",
       img: registrar,
+    },
+    {
+      name: "Susobhan Baidya",
+      description:
+        "Teacher Coordinator, Pravasana, Heritage Institute of Technology",
+      img: prof1,
+    },
+    {
+      name: "Baisakhi Mal",
+      description:
+        "Teacher Coordinator, Pravanasa, Heritage Institute of Technology",
+      img: prof2,
+    },
+    {
+      name: "Rudra Prasad Roychowdhuri",
+      description:
+        "Teacher Coordinator, Pravasana, Heritage Institute of Technology",
+      img: prof3,
     },
   ];
 

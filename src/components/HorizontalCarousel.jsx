@@ -125,15 +125,26 @@ const Card = ({ card, isPaused, isHoveredCard }) => {
 const HorizontalCarousel = ({ cards = sampleCards, speed = 0.15 }) => {
   const trackRef = useRef(null);
   const rafRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // detect mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
+
     let lastTime = performance.now();
-    // we'll duplicate the content once, so when scrollLeft passes half the scrollWidth
-    // we subtract half so the scroll appears seamless
     const halfWidth = () => track.scrollWidth / 2;
 
     const step = (time) => {
@@ -141,14 +152,12 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.15 }) => {
       const dt = time - lastTime;
       lastTime = time;
 
-      if (!isPaused) {
-        track.scrollLeft += speed * dt;
+      // always move (mobile ignores pause)
+      track.scrollLeft += speed * dt;
 
-        const hw = halfWidth();
-        if (hw && track.scrollLeft >= hw) {
-          // move back by halfWidth to create seamless loop
-          track.scrollLeft -= hw;
-        }
+      const hw = halfWidth();
+      if (hw && track.scrollLeft >= hw) {
+        track.scrollLeft -= hw;
       }
 
       rafRef.current = requestAnimationFrame(step);
@@ -156,11 +165,11 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.15 }) => {
 
     rafRef.current = requestAnimationFrame(step);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [isPaused, speed]);
+  }, [speed]);
 
   return (
     <section id="events" className="py-12">
-      <div className="container mx-auto">
+      <div className="container mx-auto mb-14">
         <h1>
           <TrueFocus
             sentence="Event Highlights"
@@ -172,62 +181,27 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.15 }) => {
             noTopMargin={true}
           />
         </h1>
+
         <div
           ref={trackRef}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => {
-            setIsPaused(false);
-            setHoveredIndex(null);
-          }}
-          className="no-scrollbar flex items-stretch gap-6 overflow-x-auto px-4 py-6"
+          className={`
+            no-scrollbar flex items-stretch gap-6 overflow-x-auto px-4 py-6 mt-4
+            ${isMobile ? "pointer-events-none select-none" : ""}
+          `}
         >
           {cards.map((c, idx) => (
-            <div
-              key={c.id}
-              onClick={() => {
-                setIsPaused(true);
-                setHoveredIndex(hoveredIndex === idx ? null : idx);
-              }}
-              onMouseEnter={() => setHoveredIndex(idx)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className={`transition-filter duration-300 cursor-pointer ${
-                hoveredIndex !== null && hoveredIndex !== idx
-                  ? "scale-95 blur-sm"
-                  : ""
-              }`}
-            >
-              <Card
-                card={c}
-                isPaused={isPaused}
-                isHoveredCard={hoveredIndex === idx}
-              />
+            <div key={c.id}>
+              <Card card={c} />
             </div>
           ))}
 
-          {/* duplicate the cards to create continuous flow visual */}
           {cards.map((c, idx) => (
-            <div
-              key={`dup-${c.id}`}
-              onClick={() => {
-                setIsPaused(true);
-                setHoveredIndex(hoveredIndex === idx + cards.length ? null : idx + cards.length);
-              }}
-              onMouseEnter={() => setHoveredIndex(idx + cards.length)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className={`transition-filter duration-300 cursor-pointer ${
-                hoveredIndex !== null && hoveredIndex !== idx + cards.length
-                  ? "scale-95 blur-sm"
-                  : ""
-              }`}
-            >
-              <Card
-                card={c}
-                isPaused={isPaused}
-                isHoveredCard={hoveredIndex === idx + cards.length}
-              />
+            <div key={`dup-${c.id}`}>
+              <Card card={c} />
             </div>
           ))}
         </div>
+
         <div className="mt-12 flex flex-col items-center justify-center gap-6 px-4">
           <p className="text-center text-xl text-gray-300">
             To know more about each event:
