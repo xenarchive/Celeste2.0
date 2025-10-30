@@ -212,7 +212,7 @@ const HorizontalCarousel = ({ cards = sampleCards, speed = 0.15 }) => {
               title="Download Brochure"
               leftIcon={<TiLocationArrow />}
               containerClass="bg-yellow-400 flex-center gap-1 text-[20px] sm:text-[22px]"
-              href="https://drive.google.com/file/d/1QXdXrj-uGoqaUybkX__HLBL8a3QOrQhO/view?usp=sharing"
+              href="https://drive.google.com/file/d/1QkXlFVX52vZx7F3Ylq-8VedlbWr86B_c/view?usp=sharing"
               target="_blank"
             />
           </div>
